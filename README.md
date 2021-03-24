@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int SAMPLE_FORM_ID = 1;
     private static final String SAMPLE_FORM_NAME = "UP Board Result";
     private String sampleJson = "{\"formId\":52,\"title\":\"UP Board Result\",\"sub_title\":\"Note: To get UP Board Result update on WhatsApp and Gmail\",\"requestApi\":\"https://www.yourwebsite.in/api/v3/submit-form\",\"methodType\":\"POST\",\"buttonText\":\"Register\",\"popup\":{\"title\":\"Thank You!\",\"description\":\"You will get your result soon\",\"submit_btn_text\":\"Continue\"},\"fieldList\":[{\"fieldData\":null,\"fieldName\":\"Name\",\"fieldSuggestions\":null,\"fieldType\":1,\"inputType\":\"textPersonName\"},{\"fieldData\":null,\"fieldName\":\"Roll Number\",\"fieldSuggestions\":null,\"fieldType\":1,\"inputType\":\"number\"},{\"fieldData\":\"[{\\\"id\\\":1,\\\"title\\\":\\\"PCM\\\"},{\\\"id\\\":2,\\\"title\\\":\\\"PCMB\\\"},{\\\"id\\\":3,\\\"title\\\":\\\"Arts\\\"},{\\\"id\\\":4,\\\"title\\\":\\\"Commerce\\\"}]\",\"fieldName\":\"Select Steam\",\"fieldSuggestions\":null,\"fieldType\":2,\"inputType\":null},{\"fieldData\":null,\"fieldName\":\"Mobile No\",\"fieldSuggestions\":\"[\\\"9891983694\\\"]\",\"fieldType\":1,\"inputType\":\"phone\"},{\"fieldData\":null,\"fieldName\":\"Email Id\",\"fieldSuggestions\":\"[\\\"@gmail.com\\\", \\\"@yahoo.com\\\", \\\"@hotmail.com\\\", \\\"@outlook.com\\\"]\",\"fieldType\":1,\"inputType\":\"textEmailAddress\"},{\"fieldData\":null,\"fieldName\":\"Address\",\"fieldSuggestions\":null,\"fieldType\":1,\"inputType\":\"textMultiLine\"}]}";
-    private boolean isOpenActivityByJson = true;
+    private boolean isOpenActivityByJson = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
         item.setFieldName("Name");
         item.setInputType(FieldInputType.textPersonName);
         item.setFieldType(FieldType.EDIT_TEXT);
-        item.setValidation(ValidationCheck.EMPTY);
         fieldList.add(item);
 
         item = new DynamicInputModel();
@@ -102,9 +101,27 @@ public class MainActivity extends AppCompatActivity {
         fieldList.add(item);
 
         item = new DynamicInputModel();
+        item.setFieldName("Select Gender");
+        item.setFieldType(FieldType.RADIO_BUTTON);
+        item.setFieldData("[\"Male\",\"Female\"]");
+        fieldList.add(item);
+
+        item = new DynamicInputModel();
+        item.setFieldName("Date of Birth");
+        item.setFieldType(FieldType.DATE_PICKER);
+        item.setFieldData("Select Date");
+        fieldList.add(item);
+
+        item = new DynamicInputModel();
+        item.setFieldName("Personal Detail");
+        item.setFieldType(FieldType.TEXT_VIEW);
+        fieldList.add(item);
+
+        item = new DynamicInputModel();
         item.setFieldName("Mobile No");
         item.setInputType(FieldInputType.phone);
         item.setFieldType(FieldType.EDIT_TEXT);
+        item.setMaxLength(10);
         item.setFieldSuggestions("[\"9891983694\"]");
         fieldList.add(item);
 
@@ -117,8 +134,13 @@ public class MainActivity extends AppCompatActivity {
 
         item = new DynamicInputModel();
         item.setFieldName("Address");
-        item.setInputType(FieldInputType.textMultiLine);
+        item.setInputType(FieldInputType.number);
         item.setFieldType(FieldType.EDIT_TEXT);
+        fieldList.add(item);
+
+        item = new DynamicInputModel();
+        item.setFieldName("Subscribe for news updates");
+        item.setFieldType(FieldType.CHECK_BOX);
         fieldList.add(item);
 
         return fieldList;
