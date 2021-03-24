@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="40dp"
+    android:gravity="center">
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleSmall"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/pre_progress_button"
+        android:padding="2dp"
+        android:visibility="invisible"
+        android:indeterminateDrawable="@drawable/pre_progress_custom_white" />
+
+    <ImageView
+        android:id="@+id/iv_status"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:scaleType="fitCenter"
+        android:background="@drawable/pre_progress_button"
+        android:padding="12dp"
+        android:visibility="invisible"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/pre_ic_action_tick"
+        app:tint="@android:color/white" />
+
+    <Button
+        android:id="@+id/btn_action"
+        app:backgroundTint="@color/pre_color_register_button"
+        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/pre_bg_progress_button"
+        android:paddingLeft="100dp"
+        android:paddingRight="100dp"
+        android:textColor="@android:color/white"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:text="Register"/>
+
+
+</RelativeLayout>

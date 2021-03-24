@@ -1,0 +1,50 @@
+{
+  "formId": 52,
+  "title": "UP Board Result",
+  "sub_title": "Note: To get UP Board Result update on WhatsApp and Gmail",
+  "requestApi": "https://www.yourwebsite.in/api/v3/submit-form",
+  "methodType": "POST",
+  "buttonText": "Register",
+  "popup": {
+    "title": "Thank You!",
+    "description": "You will get your result soon",
+    "submit_btn_text": "Continue"
+  },
+  "fieldList": [
+    {
+      "fieldName":"Name",
+      "fieldType":1,
+      "fieldData":null,
+      "fieldSuggestions":null,
+      "inputType":"textPersonName"
+    },
+    {
+      "fieldName":"Select Steam",
+      "fieldType":2,
+      "fieldData":"[{\"id\":1,\"title\":\"PCM\"},{\"id\":2,\"title\":\"PCMB\"},{\"id\":3,\"title\":\"Arts\"},{\"id\":4,\"title\":\"Commerce\"}]",
+      "fieldSuggestions":null,
+      "inputType":null
+    },
+    {
+      "fieldName":"Mobile No",
+      "fieldType":1,
+      "fieldData":null,
+      "fieldSuggestions":null,
+      "inputType":"phone"
+    },
+    {
+      "fieldName":"Email Id",
+      "fieldType":1,
+      "fieldData":null,
+      "fieldSuggestions":"[\"@gmail.com\", \"@yahoo.com\", \"@hotmail.com\", \"@outlook.com\"]",
+      "inputType":"textEmailAddress"
+    },
+    {
+      "fieldName":"Address",
+      "fieldType":1,
+      "fieldData":null,
+      "fieldSuggestions":null,
+      "inputType":"textMultiLine"
+    }
+  ]
+}

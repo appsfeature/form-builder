@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimary">#343436</color>
+    <color name="colorPrimaryDark">#272729</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!--App Default Theme Colors-->
+    <color name="themePlaceHolderBackgroundCardColor">#4C4C4D</color>
+    <color name="themeBackgroundCardColor">#212123</color>
+    <color name="themeWindowBackground">#111113</color>
+    <color name="themeDividerColor">#4E4E50</color>
+    <color name="themeDividerColorDark">#59595A</color>
+    <color name="themeColorFilter">#A3A3A5</color>
+    <color name="themeTextColor">@android:color/white</color>
+    <color name="themeTitleColor">@android:color/white</color>
+    <color name="themeTitleNormalColor">@android:color/white</color>
+    <color name="themeTextColorLite">#666666</color>
+    <color name="themeTextColorMerge">#99292929</color>
+    <color name="themeButtonShapeColor">#39393B</color>
+    <color name="themeButtonShapeColorWhite">#39393B</color>
+    <color name="themeHintColor">#AAAAAA</color>
+    <color name="themeSecondaryTextColor">#666666</color>
+    <color name="themeBackButtonColor">#ffffff</color>
+    <color name="themeWindowBackgroundWhite">@color/themeWindowBackground</color>
+    <color name="themeColorBlackWhite">#ffffff</color>
+    <color name="themeColorGreyWhite">#ffffff</color>
+    <color name="themeColorWhiteBlack">#000000</color>
+    <color name="themeColorWhiteLite">#919192</color>
+    <color name="themeButtonShapeSelectedColor">#A3A3A5</color>
+    <color name="themeButtonShapeNotSelectedColor">@color/themeBackgroundCardColor</color>
+    <!--App Default Theme Colors-->
+</resources>

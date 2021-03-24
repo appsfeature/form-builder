@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">pre-registration</string>
+    <string name="form_sub_title">Note: To get %1$s update on WhatsApp and Gmail</string>
+    <string name="alert_title_message">Thank You!</string>
+    <string name="alert_description_message">You will get your result soon</string>
+    <string name="alert_button_text">Continue</string>
+    <string name="error_form_already_submitted">Form already submitted.</string>
+
+</resources>

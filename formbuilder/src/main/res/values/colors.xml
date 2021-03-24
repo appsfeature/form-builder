@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!--App Default Theme Colors-->
+    <color name="themePlaceHolderBackgroundCardColor">#FFFFFF</color>
+    <color name="themeBackgroundCardColor">#FFFFFF</color>
+    <color name="themeWindowBackground">#e6e8e8</color>
+    <color name="themeDividerColor">#F2F2F3</color>
+    <color name="themeDividerColorDark">#E1E1E2</color>
+    <color name="themeColorFilter">@color/colorPrimary</color>
+    <color name="themeTextColor">#292929</color>
+    <color name="themeTitleColor">@color/colorPrimary</color>
+    <color name="themeTitleNormalColor">@color/themeTextColor</color>
+    <color name="themeTextColorLite">#686767</color>
+    <color name="themeTextColorMerge">#99292929</color>
+    <color name="themeHintColor">#AAAAAA</color>
+    <color name="themeSecondaryTextColor">#666666</color>
+    <color name="themeButtonShapeColor">#F8F8F8</color>
+    <color name="themeButtonShapeColorWhite">#ffffff</color>
+    <color name="themeBackButtonColor">#686767</color>
+    <color name="themeWindowBackgroundWhite">#ffffff</color>
+    <color name="themeColorBlackWhite">#000000</color>
+    <color name="themeColorGreyWhite">@color/themeHintColor</color>
+    <color name="themeColorWhiteBlack">#ffffff</color>
+    <color name="themeColorWhiteLite">#ffffff</color>
+    <color name="themeButtonShapeSelectedColor">@color/colorPrimaryDark</color>
+    <color name="themeButtonShapeNotSelectedColor">#F5F5F5</color>
+    <color name="pre_color_register_button">#E84C3D</color>
+    <!--App Default Theme Colors-->
+</resources>
