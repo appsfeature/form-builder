@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.formbuilder.FormBuilder;
 import com.formbuilder.interfaces.FieldInputType;
 import com.formbuilder.interfaces.FieldType;
-import com.formbuilder.interfaces.ValidationCheck;
 import com.formbuilder.model.DynamicInputModel;
 import com.formbuilder.model.FormBuilderModel;
 import com.formbuilder.model.entity.PopupEntity;
@@ -53,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         item.setFormId(SAMPLE_FORM_ID);
         item.setTitle(SAMPLE_FORM_NAME);
         item.setSubTitle("Note: To get UP Board Result update on WhatsApp and Gmail");
-        item.setRequestApi("https://www.yourwebsite.in/api/v3/submit-form");
+//        item.setRequestApi("https://www.yourwebsite.in/api/v3/submit-form");
         item.setMethodType("POST");
         item.setPopup(getPopup());
         item.setInputList(getInputFieldList());
