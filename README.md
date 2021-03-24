@@ -25,10 +25,10 @@ allprojects {
 Add this to your project build.gradle
 
 #### Dependency
-[![](https://jitpack.io/v/org.bitbucket.appsfeature/form-builder.svg)](https://jitpack.io/#org.bitbucket.appsfeature/form-builder)
+[![](https://jitpack.io/v/appsfeature/form-builder.svg)](https://jitpack.io/#appsfeature/form-builder)
 ```gradle
 dependencies {
-    implementation 'org.bitbucket.appsfeature:form-builder:1.0'
+    implementation 'com.github.appsfeature:form-builder:1.0'
 }
 ```
 Needed support libs
