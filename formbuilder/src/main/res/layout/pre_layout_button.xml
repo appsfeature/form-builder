@@ -39,8 +39,6 @@
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:background="@drawable/pre_bg_progress_button"
-        android:paddingLeft="100dp"
-        android:paddingRight="100dp"
         android:textColor="@android:color/white"
         android:textAllCaps="false"
         android:textSize="16sp"
