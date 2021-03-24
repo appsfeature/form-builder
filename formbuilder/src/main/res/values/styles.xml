@@ -20,4 +20,9 @@
         <item name="hintTextColor">@color/colorAccent</item>
     </style>
 
+    <style name="FBDatePicker" parent="Theme.MaterialComponents.Light.Dialog">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorPrimaryDark</item>
+    </style>
 </resources>

@@ -68,21 +68,36 @@ public class MainActivity extends AppCompatActivity {
         item.setFieldName("Name");
         item.setInputType(FieldInputType.textPersonName);
         item.setFieldType(FieldType.EDIT_TEXT);
-        item.setValidation(ValidationCheck.ALPHA_NUMERIC);
         fieldList.add(item);
 
         item = new DynamicInputModel();
         item.setFieldName("Select Steam");
         item.setFieldType(FieldType.SPINNER);
-        item.setValidation(ValidationCheck.SPINNER);
         item.setFieldData("[{\"id\":1,\"title\":\"PCM\"},{\"id\":2,\"title\":\"PCMB\"},{\"id\":3,\"title\":\"Arts\"},{\"id\":4,\"title\":\"Commerce\"}]");
+        fieldList.add(item);
+
+        item = new DynamicInputModel();
+        item.setFieldName("Select Gender");
+        item.setFieldType(FieldType.RADIO_BUTTON);
+        item.setFieldData("[\"Male\",\"Female\"]");
+        fieldList.add(item);
+
+        item = new DynamicInputModel();
+        item.setFieldName("Date of Birth");
+        item.setFieldType(FieldType.DATE_PICKER);
+        item.setFieldData("Select Date");
+        fieldList.add(item);
+
+        item = new DynamicInputModel();
+        item.setFieldName("Personal Detail");
+        item.setFieldType(FieldType.TEXT_VIEW);
         fieldList.add(item);
 
         item = new DynamicInputModel();
         item.setFieldName("Mobile No");
         item.setInputType(FieldInputType.phone);
         item.setFieldType(FieldType.EDIT_TEXT);
-        item.setValidation(ValidationCheck.MOBILE);
+        item.setMaxLength(10);
         item.setFieldSuggestions("[\"9891983694\"]");
         fieldList.add(item);
 
@@ -90,15 +105,18 @@ public class MainActivity extends AppCompatActivity {
         item.setFieldName("Email Id");
         item.setInputType(FieldInputType.textEmailAddress);
         item.setFieldType(FieldType.EDIT_TEXT);
-        item.setValidation(ValidationCheck.EMAIL);
         item.setFieldSuggestions("[\"@gmail.com\", \"@yahoo.com\", \"@hotmail.com\", \"@outlook.com\"]");
         fieldList.add(item);
 
         item = new DynamicInputModel();
         item.setFieldName("Address");
         item.setInputType(FieldInputType.number);
-        item.setValidationRegex("^[0-9]{6}$");
         item.setFieldType(FieldType.EDIT_TEXT);
+        fieldList.add(item);
+
+        item = new DynamicInputModel();
+        item.setFieldName("Subscribe for news updates");
+        item.setFieldType(FieldType.CHECK_BOX);
         fieldList.add(item);
 
         return fieldList;

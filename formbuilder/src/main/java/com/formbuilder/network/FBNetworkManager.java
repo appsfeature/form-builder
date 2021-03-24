@@ -47,7 +47,7 @@ public class FBNetworkManager {
                         FBUtility.log("JSON : " + userData);
                         if(mRetrofit != null) {
                             Map<String, String> params = new HashMap<>();
-                            params.put("userData", FBUtility.encode(userData));
+                            params.put("data", FBUtility.encode(userData));
                             Response<FBNetworkModel> response = mRetrofit.postDataRequest(host, params).execute();
                             if (response.body() != null) {
                                 response.body().setData(userData);

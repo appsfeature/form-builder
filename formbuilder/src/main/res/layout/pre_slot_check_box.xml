@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_between_fields"
+        android:background="@drawable/pre_bg_shape_select_steam"
+        android:gravity="center"
+        android:padding="16dp"
+        android:orientation="vertical">
+
+
+        <CheckBox
+            android:id="@+id/cb_check_box"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Check Box" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

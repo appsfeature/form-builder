@@ -33,6 +33,9 @@ public class DynamicInputModel implements Serializable {
     @Expose
     @SerializedName(value="inputData")
     private String inputData;
+    @Expose
+    @SerializedName(value="maxLength")
+    private int maxLength = 0;
 
     public String getFieldName() {
         return fieldName;
@@ -92,6 +95,14 @@ public class DynamicInputModel implements Serializable {
 
     public void setValidationRegex(String validationRegex) {
         this.validation = validationRegex;
+    }
+
+    public int getMaxLength() {
+        return maxLength;
+    }
+
+    public void setMaxLength(int maxLength) {
+        this.maxLength = maxLength;
     }
 
     public String toJson(boolean excludeFieldsWithoutExposeAnnotation) {

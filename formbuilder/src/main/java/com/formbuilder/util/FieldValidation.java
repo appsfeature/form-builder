@@ -138,6 +138,8 @@ public class FieldValidation {
 
     public static boolean check(Context context, EditText editText, String validation) {
         switch (validation) {
+            case ValidationCheck.NOT_REQUIRED:
+                return true;
             case ValidationCheck.EMPTY:
                 return hasText(context, editText);
             case ValidationCheck.EMAIL:

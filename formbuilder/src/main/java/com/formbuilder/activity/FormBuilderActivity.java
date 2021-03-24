@@ -44,7 +44,6 @@ public class FormBuilderActivity extends AppCompatActivity {
     private String title;
     private FBNetworkManager networkManager;
     private FBProgressButton btnAction;
-    private final Handler handler = new Handler();
     private RecyclerView mRecyclerView;
 
     @Override

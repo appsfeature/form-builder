@@ -1,5 +1,6 @@
 package com.formbuilder.model.entity;
 
+import com.formbuilder.util.GsonParser;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -36,6 +37,10 @@ public class MasterEntity implements Serializable {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String toJson() {
+        return GsonParser.getGson().toJson(this, MasterEntity.class);
     }
 
 }

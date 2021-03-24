@@ -14,7 +14,7 @@ import java.lang.annotation.RetentionPolicy;
         ValidationCheck.PIN_CODE,
         ValidationCheck.IFSC_CODE,
         ValidationCheck.ALPHA_NUMERIC,
-        ValidationCheck.SPINNER,
+        ValidationCheck.SPINNER
 })
 @Retention(RetentionPolicy.SOURCE)
 public @interface ValidationCheck {
