@@ -4,9 +4,9 @@
 
 
 <p align="left">
-  <img src="https://raw.githubusercontent.com/appsfeature/form-builder/master/screenshots/sample1.png" alt="Preview 1" width="200" /> 
-  <img src="https://raw.githubusercontent.com/appsfeature/form-builder/master/screenshots/sample2.png" alt="Preview 2" width="200" /> 
-  <img src="https://raw.githubusercontent.com/appsfeature/form-builder/master/screenshots/sample3.png" alt="Preview 3" width="200" />
+  <img src="https://raw.githubusercontent.com/appsfeature/form-builder/master/screenshots/sample1.png" alt="Preview 1" width="250" /> 
+  <img src="https://raw.githubusercontent.com/appsfeature/form-builder/master/screenshots/sample2.png" alt="Preview 2" width="250" /> 
+  <img src="https://raw.githubusercontent.com/appsfeature/form-builder/master/screenshots/sample3.png" alt="Preview 3" width="250" />
 </p>
 
   
