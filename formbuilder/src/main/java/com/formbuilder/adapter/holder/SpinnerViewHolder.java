@@ -1,13 +1,16 @@
 package com.formbuilder.adapter.holder;
 
+import android.content.Context;
 import android.view.View;
 import android.widget.Spinner;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.formbuilder.R;
+import com.formbuilder.activity.FormBuilderActivity;
 import com.formbuilder.adapter.DynamicInputAdapter;
 import com.formbuilder.model.entity.MasterEntity;
+import com.formbuilder.util.FBUtility;
 import com.formbuilder.util.GsonParser;
 import com.google.gson.reflect.TypeToken;
 
@@ -44,5 +47,9 @@ public class SpinnerViewHolder extends RecyclerView.ViewHolder {
             spinnerList.add(new MasterEntity(0, "No Data"));
         }
         return spinnerList;
+    }
+
+    public static void showValidationError(Context context, String spinnerTitle) {
+        FBUtility.showToastCentre(context, "Please " + spinnerTitle);
     }
 }

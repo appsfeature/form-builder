@@ -1,9 +1,11 @@
 package com.formbuilder.activity;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -14,7 +16,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.formbuilder.R;
 import com.formbuilder.adapter.DynamicInputAdapter;
+import com.formbuilder.adapter.holder.SpinnerViewHolder;
 import com.formbuilder.interfaces.FormResponse;
+import com.formbuilder.interfaces.ValidationCheck;
 import com.formbuilder.model.DynamicInputModel;
 import com.formbuilder.model.FBNetworkModel;
 import com.formbuilder.model.FormBuilderModel;
@@ -22,8 +26,9 @@ import com.formbuilder.network.FBNetworkManager;
 import com.formbuilder.util.FBAlertUtil;
 import com.formbuilder.util.FBConstant;
 import com.formbuilder.util.FBPreferences;
-import com.formbuilder.util.FBUtility;
 import com.formbuilder.util.FBProgressButton;
+import com.formbuilder.util.FBUtility;
+import com.formbuilder.util.FieldValidation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +44,8 @@ public class FormBuilderActivity extends AppCompatActivity {
     private String title;
     private FBNetworkManager networkManager;
     private FBProgressButton btnAction;
+    private final Handler handler = new Handler();
+    private RecyclerView mRecyclerView;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -51,10 +58,10 @@ public class FormBuilderActivity extends AppCompatActivity {
     }
 
     private void loadData() {
-        if(!TextUtils.isEmpty(property.getSubTitle())) {
+        if (!TextUtils.isEmpty(property.getSubTitle())) {
             tvSubTitle.setText(property.getSubTitle());
             tvSubTitle.setVisibility(View.VISIBLE);
-        }else {
+        } else {
             tvSubTitle.setVisibility(View.GONE);
         }
         btnAction.setText(property.getButtonText());
@@ -70,27 +77,60 @@ public class FormBuilderActivity extends AppCompatActivity {
             title = property.getTitle();
             networkManager = new FBNetworkManager(this, property.getRequestApi());
             setUpToolBar();
-        }else {
+        } else {
             FBUtility.showPropertyError(this);
         }
     }
 
+
     private void initView() {
         layoutNoData = findViewById(R.id.ll_no_data);
         tvSubTitle = findViewById(R.id.tv_sub_title);
-        RecyclerView rvList = findViewById(R.id.recycler_view);
-        rvList.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        adapter = new DynamicInputAdapter(mList);
-        rvList.setAdapter(adapter);
+        mRecyclerView = findViewById(R.id.recycler_view);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        adapter = new DynamicInputAdapter(this, mList);
+        mRecyclerView.setAdapter(adapter);
 
         btnAction = FBProgressButton.newInstance(this)
                 .setText(FBConstant.DEFAULT_BUTTON_TEXT)
                 .setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        if(!isValidationCheck()){
+                            return;
+                        }
+                        FBUtility.hideKeyboard(FormBuilderActivity.this);
                         submitRequest();
                     }
                 });
+    }
+
+    private boolean isValidationCheck() {
+        boolean isValidAllFields = true;
+        if(mRecyclerView != null && mRecyclerView.getLayoutManager() != null) {
+            for (int i = 0; i < mList.size(); i++){
+                if(!mList.get(i).getValidation().equals(ValidationCheck.NOT_REQUIRED)) {
+                    if(mList.get(i).getValidation().equals(ValidationCheck.SPINNER)) {
+                        if(TextUtils.isEmpty(mList.get(i).getInputData()) || mList.get(i).getInputData().equals("0")){
+                            SpinnerViewHolder.showValidationError(this, mList.get(i).getFieldName());
+                            isValidAllFields = false;
+                        }
+                    }else{
+                        View mRecycleView = mRecyclerView.getLayoutManager().getChildAt(i);
+                        if (mRecycleView != null && mRecycleView.findViewById(R.id.et_input_text) instanceof EditText) {
+                            EditText editText = mRecycleView.findViewById(R.id.et_input_text);
+                            if (editText != null) {
+                                boolean status = FieldValidation.check(this, editText, mList.get(i).getValidation());
+                                if (!status) {
+                                    isValidAllFields = status;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return isValidAllFields;
     }
 
     private void loadList(List<DynamicInputModel> list) {
@@ -118,9 +158,9 @@ public class FormBuilderActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if( id == android.R.id.home ){
+        if (id == android.R.id.home) {
             onBackPressed();
-            return true ;
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }

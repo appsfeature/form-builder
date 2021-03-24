@@ -17,6 +17,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.formbuilder.R;
+import com.formbuilder.activity.FormBuilderActivity;
+import com.formbuilder.interfaces.ValidationCheck;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.regex.Pattern;
@@ -26,18 +28,18 @@ import androidx.core.content.ContextCompat;
 
 /**
  * @author Created by Abhijit on 15-Oct-16.
- *
- *                  if (!FieldValidation.isEmpty(getContext(), etName, "Invalid product name")) {
- *                     return;
- *                 } else if (!FieldValidation.isEmpty(getContext(), etUnit, "Invalid unit code")) {
- *                     return;
- *                 } else if (!FieldValidation.isEmpty(getContext(), etCostPrice, "Invalid Purchase price")) {
- *                     return;
- *                 } else if (!FieldValidation.isEmpty(getContext(), etSalePrice, "Invalid sale price")) {
- *                     return;
- *                 } else if (!FieldValidation.isEmpty(getContext(), etTaxRate, "Invalid tax rate")) {
- *                     return;
- *                 }
+ * <p>
+ * if (!FieldValidation.isEmpty(getContext(), etName, "Invalid product name")) {
+ * return;
+ * } else if (!FieldValidation.isEmpty(getContext(), etUnit, "Invalid unit code")) {
+ * return;
+ * } else if (!FieldValidation.isEmpty(getContext(), etCostPrice, "Invalid Purchase price")) {
+ * return;
+ * } else if (!FieldValidation.isEmpty(getContext(), etSalePrice, "Invalid sale price")) {
+ * return;
+ * } else if (!FieldValidation.isEmpty(getContext(), etTaxRate, "Invalid tax rate")) {
+ * return;
+ * }
  */
 
 public class FieldValidation {
@@ -74,8 +76,9 @@ public class FieldValidation {
         String validText = button.getText().toString();
         return TextUtils.isEmpty(validText) && validText.equals(defaultValue);
     }
+
     public static boolean isPassword(Context context, EditText editText, EditText editText2) {
-        return hasTextMatched(context, editText,editText2);
+        return hasTextMatched(context, editText, editText2);
     }
 
     public static boolean isEmpty(Context context, EditText editText) {
@@ -118,12 +121,6 @@ public class FieldValidation {
         return isValid(context, editText, EMAIL_REGEX, EMAIL_MSG, required);
     }
 
-
-    // call this method when you need to check phone number validation
-    public static boolean isPhoneNumber(Context context, EditText editText, boolean required) {
-        return isValid(context, editText, PHONE_REGEX, PHONE_MSG, required);
-    }
-
     public static boolean isMobileNumber(Context context, EditText editText, boolean required) {
         return isValid(context, editText, MOBILE_REGEX, MOBILE_MSG, required);
     }
@@ -139,8 +136,28 @@ public class FieldValidation {
     }
 
 
+    public static boolean check(Context context, EditText editText, String validation) {
+        switch (validation) {
+            case ValidationCheck.EMPTY:
+                return hasText(context, editText);
+            case ValidationCheck.EMAIL:
+                return isValid(context, editText, EMAIL_REGEX, EMAIL_MSG, true);
+            case ValidationCheck.MOBILE:
+                return isValid(context, editText, MOBILE_REGEX, MOBILE_MSG, true);
+            case ValidationCheck.GST_NUMBER:
+                return isValid(context, editText, GST_REGEX, INVALID, true);
+            case ValidationCheck.PIN_CODE:
+                return isValid(context, editText, PIN_CODE_REGEX, PIN_MSG, true);
+            case ValidationCheck.IFSC_CODE:
+                return isValid(context, editText, IFSC_CODE_REGEX, IFSC_MSG, true);
+            case ValidationCheck.ALPHA_NUMERIC:
+                return isValid(context, editText, ALPHA_NUM_REGEX, ALP_NUM_MSG, true);
+            default:
+                return isValid(context, editText, validation, INVALID, true);
+        }
+    }
+
     private static final String EMAIL_REGEX = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
-    private static final String PHONE_REGEX = "^[4-9][0-9]{9}$";
     private static final String MOBILE_REGEX = "^[4-9][0-9]{9}$";
     //    private static final String GST_REGEX = "^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$";
     private static final String GST_REGEX = "^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[0-9A-Z]{1}[0-9A-Z]{1}[0-9A-Z]{1}$";
@@ -160,15 +177,16 @@ public class FieldValidation {
     private static final String DATE1_REGEX = "^(((0[1-9]|[12][0-9]|30)[-/]?(0[13-9]|1[012])|31[-/]?(0[13578]|1[02])|(0[1-9]|1[0-9]|2[0-8])[-/]?02)[-/]?[0-9]{4}|29[-/]?02[-/]?([0-9]{2}(([2468][048]|[02468][48])|[13579][26])|([13579][26]|[02468][048]|0[0-9]|1[0-6])00))$";
 
     // Error Messages
-    private static final String EMAIL_MSG = "invalid email";
-    private static final String PHONE_MSG = "invalid phone";
-    private static final String MOBILE_MSG = "invalid mobile";
+    private static final String EMAIL_MSG = "Invalid email";
+    private static final String PHONE_MSG = "Invalid phone";
+    private static final String MOBILE_MSG = "Invalid mobile";
     private static final String PIN_MSG = "Please enter 6 digit pin code";
     private static final String IFSC_MSG = "Please enter valid IFSC code";
     private static final String PAN_MSG = "Please enter valid PAN number";
     private static final String ALP_NUM_MSG = "Please enter alpha numeric value";
     private static final String NAME_MSG = "invalid Name alphabets allow only";
     private static final String EMPTY = "Empty";
+    private static final String INVALID = "Invalid";
 
     // return true if the input field is valid, based on the parameter passed
     private static boolean isValid(Context context, EditText editText, String regex, String errMsg, boolean required) {
@@ -183,7 +201,7 @@ public class FieldValidation {
             // pattern doesn't match so returning false
             if (required && !Pattern.matches(regex, text)) {
                 Drawable drawable = ContextCompat.getDrawable(context, R.drawable.pre_ic_fail);
-                if(drawable!=null)
+                if (drawable != null)
                     drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
                 editText.setError(errMsg, drawable);
 
@@ -195,8 +213,8 @@ public class FieldValidation {
                         final int DRAWABLE_RIGHT = 2;
                         final int DRAWABLE_BOTTOM = 3;
 
-                        if(event.getAction() == MotionEvent.ACTION_UP) {
-                            if(editText.getCompoundDrawables()[DRAWABLE_RIGHT] != null) {
+                        if (event.getAction() == MotionEvent.ACTION_UP) {
+                            if (editText.getCompoundDrawables()[DRAWABLE_RIGHT] != null) {
                                 if (event.getRawX() >= (editText.getRight() - editText.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
                                     editText.setError(null);
                                     editText.setText("");
@@ -236,7 +254,7 @@ public class FieldValidation {
 
 //            editText.requestFocus();
             Drawable drawable = ContextCompat.getDrawable(context, R.drawable.pre_ic_fail);
-            if(drawable!=null)
+            if (drawable != null)
                 drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
             editText.setError(s, drawable);
             return false;
@@ -246,25 +264,26 @@ public class FieldValidation {
 //        editText.setError("done",drawable);
         return true;
     }
+
     private static boolean hasTextMatched(Context context, EditText editText, EditText editText2) {
 
         String text = editText.getText().toString().trim();
         String text2 = editText2.getText().toString().trim();
         editText.setError(null);
-        if(text.length()!=0 && text2.length()!=0 && text.equalsIgnoreCase(text2)){
+        if (text.length() != 0 && text2.length() != 0 && text.equalsIgnoreCase(text2)) {
             return true;
-        }else {
+        } else {
             Drawable drawable = ContextCompat.getDrawable(context, R.drawable.pre_ic_fail);
-            if(drawable!=null)
+            if (drawable != null)
                 drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
             // length 0 means there is no text
             if (text.length() == 0) {
                 editText.setError(getMessage("Invalid Password"), drawable);
                 return false;
-            }else if (text2.length() == 0) {
+            } else if (text2.length() == 0) {
                 editText2.setError(getMessage("Invalid Confirm Password"), drawable);
                 return false;
-            }else {
+            } else {
                 editText2.setError(getMessage("Password doesn't match"), drawable);
                 return false;
             }
@@ -278,13 +297,14 @@ public class FieldValidation {
         s.setSpan(new RelativeSizeSpan(1.1f), 0, s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         return s;
     }
+
     private static boolean hasHSNNo(Context context, EditText editText, String errorMessage) {
 
         String text = editText.getText().toString().trim();
         editText.setError(null);
 
         // length 0 means there is no text
-        if (text.length() == 0||text.length()<4) {
+        if (text.length() == 0 || text.length() < 4) {
 
             SpannableString s = new SpannableString(errorMessage);
             s.setSpan(new ForegroundColorSpan(Color.parseColor("#ffffff")), 0, s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -293,7 +313,7 @@ public class FieldValidation {
 
 //            editText.requestFocus();
             Drawable drawable = ContextCompat.getDrawable(context, R.drawable.pre_ic_fail);
-            if(drawable!=null)
+            if (drawable != null)
                 drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
             editText.setError(s, drawable);
             editText.requestFocus();

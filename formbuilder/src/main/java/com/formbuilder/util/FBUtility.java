@@ -11,6 +11,9 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -147,6 +150,21 @@ public class FBUtility {
         } catch (Exception e) {
             e.printStackTrace();
             return value;
+        }
+    }
+
+    public static void hideKeyboard(Activity activity) {
+        try {
+            if(activity != null) {
+                InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+                View f = activity.getCurrentFocus();
+                if (null != f && null != f.getWindowToken() && EditText.class.isAssignableFrom(f.getClass()))
+                    imm.hideSoftInputFromWindow(f.getWindowToken(), 0);
+                else
+                    activity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }
