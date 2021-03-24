@@ -10,6 +10,8 @@ import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -170,25 +172,49 @@ public class FieldValidation {
 
     // return true if the input field is valid, based on the parameter passed
     private static boolean isValid(Context context, EditText editText, String regex, String errMsg, boolean required) {
+        try {
+            String text = editText.getText().toString().trim();
+            // clearing the error, if it was previously set by some other values
+            editText.setError(null);
+            editText.setOnTouchListener(null);
+            // text required and editText is blank, so return false
+            if (!hasText(context, editText)) return false;
 
-        String text = editText.getText().toString().trim();
-        // clearing the error, if it was previously set by some other values
-        editText.setError(null);
+            // pattern doesn't match so returning false
+            if (required && !Pattern.matches(regex, text)) {
+                Drawable drawable = ContextCompat.getDrawable(context, R.drawable.pre_ic_fail);
+                if(drawable!=null)
+                    drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
+                editText.setError(errMsg, drawable);
 
-        // text required and editText is blank, so return false
-        if (!hasText(context, editText)) return false;
+                editText.setOnTouchListener(new View.OnTouchListener() {
+                    @Override
+                    public boolean onTouch(View v, MotionEvent event) {
+                        final int DRAWABLE_LEFT = 0;
+                        final int DRAWABLE_TOP = 1;
+                        final int DRAWABLE_RIGHT = 2;
+                        final int DRAWABLE_BOTTOM = 3;
 
-        // pattern doesn't match so returning false
-        if (required && !Pattern.matches(regex, text)) {
-            Drawable drawable = ContextCompat.getDrawable(context, R.drawable.pre_ic_fail);
-            if(drawable!=null)
-            drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
-            editText.setError(errMsg, drawable);
-            return false;
+                        if(event.getAction() == MotionEvent.ACTION_UP) {
+                            if(editText.getCompoundDrawables()[DRAWABLE_RIGHT] != null) {
+                                if (event.getRawX() >= (editText.getRight() - editText.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
+                                    editText.setError(null);
+                                    editText.setText("");
+                                    return true;
+                                }
+                            }
+                        }
+                        return false;
+                    }
+                });
+                return false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
         return true;
     }
+
 
     // check the input field has any text or not
     // return true if it contains text otherwise false
