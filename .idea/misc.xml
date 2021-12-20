@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Workspace/DroidHelios/form-builder/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Workspace/DroidHelios/form-builder/formbuilder/src/main/res/layout/form_fragment.xml" value="0.275" />
+        <entry key="..\:/Workspace/DroidHelios/form-builder/formbuilder/src/main/res/layout/pre_activity_frag_holder.xml" value="0.275" />
         <entry key="..\:/Workspace/DroidHelios/form-builder/formbuilder/src/main/res/layout/pre_registration_list.xml" value="0.275" />
       </map>
     </option>

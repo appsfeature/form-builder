@@ -105,7 +105,9 @@ public class FBPreferences {
     }
 
     public static void setRegistrationCompleted(Context context, int formId, boolean value) {
-        setBoolean(context, IS_REGISTRATION_COMPLETED + formId, value);
+        if(formId > 0) {
+            setBoolean(context, IS_REGISTRATION_COMPLETED + formId, value);
+        }
     }
 
     public static boolean isRegistrationCompleted(Context context, int formId) {
