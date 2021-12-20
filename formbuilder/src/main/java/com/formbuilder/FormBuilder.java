@@ -2,16 +2,18 @@ package com.formbuilder;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
 
 import com.formbuilder.activity.FormBuilderActivity;
+import com.formbuilder.fragment.FormBuilderFragment;
 import com.formbuilder.interfaces.FormResponse;
 import com.formbuilder.model.FormBuilderModel;
 import com.formbuilder.util.FBConstant;
 import com.formbuilder.util.FBPreferences;
 import com.formbuilder.util.FBUtility;
 import com.formbuilder.util.GsonParser;
-
-import java.util.ArrayList;
 
 public class FormBuilder {
 
@@ -74,6 +76,15 @@ public class FormBuilder {
         } else {
             FBUtility.showToastCentre(context, context.getString(R.string.error_form_already_submitted));
         }
+    }
+
+    public Fragment getFragment(FormBuilderModel property, FormResponse.FormSubmitListener formSubmitListener) {
+        setFormSubmitListener(formSubmitListener);
+        Fragment fragment = new FormBuilderFragment();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(FBConstant.CATEGORY_PROPERTY, property);
+        fragment.setArguments(bundle);
+        return fragment;
     }
 
     private FormResponse.FormSubmitListener mFormSubmitListener;
