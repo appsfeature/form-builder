@@ -1,5 +1,6 @@
 package com.formbuilder.model;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -13,21 +14,25 @@ public class FBNetworkModel {
     @Expose
     private String status;
 
+    @SerializedName("message")
+    @Expose
+    private String message;
+
     @SerializedName("data")
     @Expose
-    private String data;
+    private Object data;
 
     public FBNetworkModel() {
 
     }
 
-    public FBNetworkModel(String status, String data) {
+    public FBNetworkModel(String status, String message) {
         this.status = status;
-        this.data = data;
+        this.message = message;
     }
 
     public String getData() {
-        return data;
+        return new Gson().toJson(data);
     }
 
     public void setData(String data) {
@@ -40,5 +45,13 @@ public class FBNetworkModel {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

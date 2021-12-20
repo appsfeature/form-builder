@@ -5,6 +5,8 @@ import com.formbuilder.model.FBNetworkModel;
 import java.util.Map;
 
 import retrofit2.Call;
+import retrofit2.http.FieldMap;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
@@ -17,16 +19,26 @@ import retrofit2.http.Url;
 
 public interface FBApiConfig {
 
-    @GET("{endpoint}")
-    Call<FBNetworkModel> getData(@Path("endpoint") String endpoint, @QueryMap Map<String, String> options);
+//    @GET("{endpoint}")
+//    Call<FBNetworkModel> getData(@Path("endpoint") String endpoint, @QueryMap Map<String, String> options);
+//
+//    @POST("{endpoint}")
+//    Call<FBNetworkModel> postData(@Path("endpoint") String endpoint, @QueryMap Map<String, String> options);
+//
+//    @GET
+//    Call<FBNetworkModel> getDataRequest(@Url String url, @QueryMap Map<String, String> options);
+//
+//    @POST
+//    Call<FBNetworkModel> postDataRequest(@Url String url, @QueryMap Map<String, String> options);
 
     @POST("{endpoint}")
-    Call<FBNetworkModel> postData(@Path("endpoint") String endpoint, @QueryMap Map<String, String> options);
+    Call<FBNetworkModel> requestPost(@Path("endpoint") String endpoint, @QueryMap Map<String, String> options);
 
-    @GET
-    Call<FBNetworkModel> getDataRequest(@Url String url, @QueryMap Map<String, String> options);
+    @GET("{endpoint}")
+    Call<FBNetworkModel> requestGet(@Path("endpoint") String endpoint, @QueryMap Map<String, String> options);
 
-    @POST
-    Call<FBNetworkModel> postDataRequest(@Url String url, @QueryMap Map<String, String> options);
+    @FormUrlEncoded
+    @POST("{endpoint}")
+    Call<FBNetworkModel> requestPostDataForm(@Path("endpoint") String endpoint, @FieldMap Map<String, String> options);
 
 }

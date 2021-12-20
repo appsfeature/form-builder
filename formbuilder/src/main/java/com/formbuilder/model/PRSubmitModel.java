@@ -28,7 +28,7 @@ public class PRSubmitModel {
     private String appName ;
     @Expose
     @SerializedName(value="input_field_data")
-    private List<DynamicInputModel> boardResultField ;
+    private List<DynamicInputModel> inputFieldData;
 
     public int getFormId() {
         return formId;
@@ -78,12 +78,12 @@ public class PRSubmitModel {
         this.appName = appName;
     }
 
-    public List<DynamicInputModel> getBoardResultField() {
-        return boardResultField;
+    public List<DynamicInputModel> getInputFieldData() {
+        return inputFieldData;
     }
 
-    public void setBoardResultField(List<DynamicInputModel> boardResultField) {
-        this.boardResultField = boardResultField;
+    public void setInputFieldData(List<DynamicInputModel> inputFieldData) {
+        this.inputFieldData = inputFieldData;
     }
 
     public String toJson() {

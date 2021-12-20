@@ -36,6 +36,9 @@ public class DynamicInputModel implements Serializable {
     @Expose
     @SerializedName(value="maxLength")
     private int maxLength = 0;
+    @Expose
+    @SerializedName(value="paramKey")
+    private String paramKey;
 
     public String getFieldName() {
         return fieldName;
@@ -103,6 +106,14 @@ public class DynamicInputModel implements Serializable {
 
     public void setMaxLength(int maxLength) {
         this.maxLength = maxLength;
+    }
+
+    public String getParamKey() {
+        return paramKey;
+    }
+
+    public void setParamKey(String paramKey) {
+        this.paramKey = paramKey;
     }
 
     public String toJson(boolean excludeFieldsWithoutExposeAnnotation) {

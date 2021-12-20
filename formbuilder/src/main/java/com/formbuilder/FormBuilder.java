@@ -56,45 +56,36 @@ public class FormBuilder {
         return FBPreferences.isRegistrationCompleted(context, formId);
     }
 
-    public void openRegistrationActivity(Context context, int formId, String json) {
+    public void openRegistrationActivity(Context context, int formId, String json, FormResponse.FormSubmitListener formSubmitListener) {
         FormBuilderModel property = GsonParser.getGson().fromJson(json, FormBuilderModel.class);
         if (property != null) {
-            openRegistrationActivity(context, formId, property);
+            openRegistrationActivity(context, formId, property, formSubmitListener);
         } else {
             FBUtility.showToastCentre(context, FBConstant.Error.INVALID_FORM_DATA);
         }
     }
 
 
-    public void openRegistrationActivity(Context context, int formId, FormBuilderModel property) {
+    public void openRegistrationActivity(Context context, int formId, FormBuilderModel property, FormResponse.FormSubmitListener formSubmitListener) {
+        setFormSubmitListener(formSubmitListener);
         if (!isRegistrationCompleted(context, formId)) {
             context.startActivity(new Intent(context, FormBuilderActivity.class)
                     .putExtra(FBConstant.CATEGORY_PROPERTY, property));
         } else {
             FBUtility.showToastCentre(context, context.getString(R.string.error_form_already_submitted));
         }
-
-
     }
 
-    private final ArrayList<FormResponse.FormSubmitListener> mFormSubmitListener = new ArrayList<>();
+    private FormResponse.FormSubmitListener mFormSubmitListener;
 
-    public FormBuilder addFormSubmitListener(FormResponse.FormSubmitListener callback) {
-        synchronized (mFormSubmitListener) {
-            mFormSubmitListener.add(callback);
-        }
-        return this;
-    }
-
-    public void removeFormSubmitListeners(FormResponse.FormSubmitListener callback) {
-        synchronized (mFormSubmitListener) {
-            mFormSubmitListener.remove(callback);
-        }
+    public void setFormSubmitListener(FormResponse.FormSubmitListener mFormSubmitListener) {
+        this.mFormSubmitListener = null;
+        this.mFormSubmitListener = mFormSubmitListener;
     }
 
     public void dispatchOnFormSubmit(String data) {
-        for (FormResponse.FormSubmitListener callback : mFormSubmitListener) {
-            callback.onFormSubmitted(data);
+        if(mFormSubmitListener != null){
+            mFormSubmitListener.onFormSubmitted(data);
         }
     }
 }

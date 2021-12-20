@@ -74,7 +74,7 @@ public class FormBuilderActivity extends AppCompatActivity {
         if (bundle != null && bundle.getSerializable(FBConstant.CATEGORY_PROPERTY) instanceof FormBuilderModel) {
             property = (FormBuilderModel) bundle.getSerializable(FBConstant.CATEGORY_PROPERTY);
             title = property.getTitle();
-            networkManager = new FBNetworkManager(this, property.getRequestApi());
+            networkManager = new FBNetworkManager(this, property.getBaseUrl());
             setUpToolBar();
         } else {
             FBUtility.showPropertyError(this);
@@ -170,7 +170,7 @@ public class FormBuilderActivity extends AppCompatActivity {
                 @Override
                 public void onAnimationCompleted() {
                     if (networkManager != null && property != null) {
-                        networkManager.submitRegistration(property.getFormId(), mList, new FormResponse.Callback<FBNetworkModel>() {
+                        networkManager.submitRegistration(property, mList, new FormResponse.Callback<FBNetworkModel>() {
                             @Override
                             public void onSuccess(FBNetworkModel response) {
                                 if (response != null && response.getStatus().equalsIgnoreCase(FBConstant.SUCCESS)) {

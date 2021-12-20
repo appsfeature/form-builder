@@ -2,6 +2,8 @@ package com.formbuilder.model;
 
 import androidx.annotation.NonNull;
 
+import com.formbuilder.interfaces.RequestType;
+import com.formbuilder.interfaces.SubmissionType;
 import com.formbuilder.model.entity.PopupEntity;
 import com.formbuilder.util.FBConstant;
 import com.google.gson.annotations.Expose;
@@ -9,6 +11,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 public class FormBuilderModel implements Serializable, Cloneable {
 
@@ -25,12 +28,21 @@ public class FormBuilderModel implements Serializable, Cloneable {
     private String subTitle;
 
     @Expose
+    @SerializedName(value="baseUrl")
+    private String baseUrl;
+
+    @Expose
     @SerializedName(value="requestApi")
     private String requestApi;
 
     @Expose
-    @SerializedName(value="methodType")
-    private String methodType;
+    @SerializedName(value="requestType")
+    private int requestType;
+
+    @Expose
+    @SerializedName(value="submissionType")
+    @SubmissionType
+    private int submissionType;
 
     @Expose
     @SerializedName(value="buttonText")
@@ -43,6 +55,8 @@ public class FormBuilderModel implements Serializable, Cloneable {
     @Expose
     @SerializedName(value="fieldList")
     private List<DynamicInputModel> inputList;
+
+    private Map<String, String> extraParams;
 
     public int getFormId() {
         return formId;
@@ -84,12 +98,29 @@ public class FormBuilderModel implements Serializable, Cloneable {
         this.requestApi = requestApi;
     }
 
-    public String getMethodType() {
-        return methodType;
+    public String getBaseUrl() {
+        return baseUrl;
     }
 
-    public void setMethodType(String methodType) {
-        this.methodType = methodType;
+    public void setBaseUrl(String baseUrl) {
+        this.baseUrl = baseUrl;
+    }
+
+    @RequestType
+    public int getRequestType() {
+        return requestType;
+    }
+
+    public void setRequestType(@RequestType int requestType) {
+        this.requestType = requestType;
+    }
+    @SubmissionType
+    public int getSubmissionType() {
+        return submissionType;
+    }
+
+    public void setSubmissionType(int submissionType) {
+        this.submissionType = submissionType;
     }
 
     public String getButtonText() {
@@ -106,6 +137,14 @@ public class FormBuilderModel implements Serializable, Cloneable {
 
     public void setPopup(PopupEntity popup) {
         this.popup = popup;
+    }
+
+    public Map<String, String> getExtraParams() {
+        return extraParams;
+    }
+
+    public void setExtraParams(Map<String, String> extraParams) {
+        this.extraParams = extraParams;
     }
 
     @NonNull
