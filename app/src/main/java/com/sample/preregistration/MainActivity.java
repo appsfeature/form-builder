@@ -25,7 +25,7 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity {
 
     private static final int SAMPLE_FORM_ID = 1;
-    private static final String SAMPLE_FORM_NAME = "Daily Updates Form";
+    private static final String SAMPLE_FORM_NAME = "Dynamic Form Builder";
     private static final String sampleJson = "{\"formId\":52,\"title\":\"UP Board Result\",\"sub_title\":\"Note: To get UP Board Result update on WhatsApp and Gmail\",\"requestApi\":\"https://www.yourwebsite.in/api/v3/submit-form\",\"methodType\":\"POST\",\"buttonText\":\"Register\",\"popup\":{\"title\":\"Thank You!\",\"description\":\"You will get your result soon\",\"submit_btn_text\":\"Continue\"},\"fieldList\":[{\"fieldData\":null,\"fieldName\":\"Name\",\"fieldSuggestions\":null,\"fieldType\":1,\"inputType\":\"textPersonName\"},{\"fieldData\":null,\"fieldName\":\"Roll Number\",\"fieldSuggestions\":null,\"fieldType\":1,\"inputType\":\"number\"},{\"fieldData\":\"[{\\\"id\\\":1,\\\"title\\\":\\\"PCM\\\"},{\\\"id\\\":2,\\\"title\\\":\\\"PCMB\\\"},{\\\"id\\\":3,\\\"title\\\":\\\"Arts\\\"},{\\\"id\\\":4,\\\"title\\\":\\\"Commerce\\\"}]\",\"fieldName\":\"Select Steam\",\"fieldSuggestions\":null,\"fieldType\":2,\"inputType\":null},{\"fieldData\":null,\"fieldName\":\"Mobile No\",\"fieldSuggestions\":\"[\\\"9891983694\\\"]\",\"fieldType\":1,\"inputType\":\"phone\"},{\"fieldData\":null,\"fieldName\":\"Email Id\",\"fieldSuggestions\":\"[\\\"@gmail.com\\\", \\\"@yahoo.com\\\", \\\"@hotmail.com\\\", \\\"@outlook.com\\\"]\",\"fieldType\":1,\"inputType\":\"textEmailAddress\"},{\"fieldData\":null,\"fieldName\":\"Address\",\"fieldSuggestions\":null,\"fieldType\":1,\"inputType\":\"textMultiLine\"}]}";
     private static final boolean isOpenActivityByJson = false;
 
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         FormBuilderModel item = new FormBuilderModel();
         item.setFormId(SAMPLE_FORM_ID);
         item.setTitle(SAMPLE_FORM_NAME);
-        item.setSubTitle("Note: To get Daily update on WhatsApp and Gmail");
+        item.setSubTitle("Create all fields dynamic by json or Model structure.");
         item.setBaseUrl("https://www.yourwebsite.in/api/v3/");
         item.setRequestApi("submit-form");
         item.setRequestType(RequestType.GET);
