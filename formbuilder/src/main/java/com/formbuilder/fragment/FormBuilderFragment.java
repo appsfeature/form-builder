@@ -4,16 +4,13 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -49,6 +46,9 @@ public class FormBuilderFragment extends Fragment {
     private FBProgressButton btnAction;
     private RecyclerView mRecyclerView;
     private Activity activity;
+    private TextView actionBarTitle;
+    private ImageView ivBack;
+    private View layoutActionBar;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -72,6 +72,21 @@ public class FormBuilderFragment extends Fragment {
         } else {
             tvSubTitle.setVisibility(View.GONE);
         }
+        if(property.isShowActionbar()){
+            actionBarTitle.setText(title);
+            ivBack.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (activity != null) {
+                        activity.onBackPressed();
+                    }
+                }
+            });
+            layoutActionBar.setVisibility(View.VISIBLE);
+        }else {
+            layoutActionBar.setVisibility(View.GONE);
+        }
+
         btnAction.setText(property.getButtonText());
 
         loadList(property.getInputList());
@@ -93,6 +108,9 @@ public class FormBuilderFragment extends Fragment {
     private void initView(View v) {
         layoutNoData = v.findViewById(R.id.ll_no_data);
         tvSubTitle = v.findViewById(R.id.tv_sub_title);
+        layoutActionBar = v.findViewById(R.id.layout_action_bar);
+        ivBack = v.findViewById(R.id.iv_action_back);
+        actionBarTitle = v.findViewById(R.id.tv_title);
         mRecyclerView = v.findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false));
         adapter = new DynamicInputAdapter(activity, mList);
@@ -158,11 +176,11 @@ public class FormBuilderFragment extends Fragment {
                 @Override
                 public void onAnimationCompleted() {
                     if (networkManager != null && property != null) {
-                        networkManager.submitRegistration(property, mList, new FormResponse.Callback<FBNetworkModel>() {
+                        networkManager.submitForm(property, mList, new FormResponse.Callback<FBNetworkModel>() {
                             @Override
                             public void onSuccess(FBNetworkModel response) {
                                 if (response != null && response.getStatus().equalsIgnoreCase(FBConstant.SUCCESS)) {
-                                    FBPreferences.setRegistrationCompleted(activity, property.getFormId(), true);
+                                    FBPreferences.setFormSubmitted(activity, property.getFormId(), true);
                                     btnAction.revertSuccessProgress(new FBProgressButton.Listener() {
                                         @Override
                                         public void onAnimationCompleted() {

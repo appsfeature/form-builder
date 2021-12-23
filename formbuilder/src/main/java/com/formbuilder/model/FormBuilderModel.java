@@ -56,6 +56,10 @@ public class FormBuilderModel implements Serializable, Cloneable {
     @SerializedName(value="fieldList")
     private List<DynamicInputModel> inputList;
 
+    @Expose
+    @SerializedName(value="isShowActionbar")
+    private boolean isShowActionbar;
+
     private Map<String, String> extraParams;
 
     public int getFormId() {
@@ -145,6 +149,14 @@ public class FormBuilderModel implements Serializable, Cloneable {
 
     public void setExtraParams(Map<String, String> extraParams) {
         this.extraParams = extraParams;
+    }
+
+    public boolean isShowActionbar() {
+        return isShowActionbar;
+    }
+
+    public void setShowActionbar(boolean showActionbar) {
+        isShowActionbar = showActionbar;
     }
 
     @NonNull

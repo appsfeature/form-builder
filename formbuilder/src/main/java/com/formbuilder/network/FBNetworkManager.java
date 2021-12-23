@@ -37,7 +37,7 @@ public class FBNetworkManager {
         this.mRetrofit = FBRetrofit.getClient(baseUrl).create(FBApiConfig.class);
     }
 
-    public void submitRegistration(FormBuilderModel property, List<DynamicInputModel> mList, FormResponse.Callback<FBNetworkModel> callback) {
+    public void submitForm(FormBuilderModel property, List<DynamicInputModel> mList, FormResponse.Callback<FBNetworkModel> callback) {
         if (property != null && mList != null && mList.size() > 0) {
             if (property.getSubmissionType() == SubmissionType.KEY_VALUE_PAIR) {
                 sendRequestByKeyValuePair(property, mList, callback);

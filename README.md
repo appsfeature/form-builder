@@ -68,11 +68,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @MainThread
-    public void onOpenPreRegistration(View view) {
+    public void onOpenDynamicForm(View view) {
         if(isOpenActivityByJson) {
-            FormBuilder.getInstance().openRegistrationActivity(this, SAMPLE_FORM_ID, sampleJson, null);
+            FormBuilder.getInstance().openDynamicFormActivity(this, SAMPLE_FORM_ID, sampleJson, null);
         }else {
-            FormBuilder.getInstance().openRegistrationActivity(this, SAMPLE_FORM_ID, getCategoryProperty(), new FormResponse.FormSubmitListener() {
+            FormBuilder.getInstance().openDynamicFormActivity(this, SAMPLE_FORM_ID, getCategoryProperty(), new FormResponse.FormSubmitListener() {
                 @Override
                 public void onFormSubmitted(String data) {
 
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
 
     @MainThread
     public void onClearPreferences(View view) {
-        FBPreferences.setRegistrationCompleted(this, SAMPLE_FORM_ID, false);
+        FBPreferences.setFormSubmitted(this, SAMPLE_FORM_ID, false);
     }
 
     private FormBuilderModel getCategoryProperty() {

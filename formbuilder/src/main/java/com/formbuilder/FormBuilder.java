@@ -54,23 +54,23 @@ public class FormBuilder {
         return this;
     }
 
-    public boolean isRegistrationCompleted(Context context, int formId) {
-        return FBPreferences.isRegistrationCompleted(context, formId);
+    public boolean isFormSubmitted(Context context, int formId) {
+        return FBPreferences.isFormSubmitted(context, formId);
     }
 
-    public void openRegistrationActivity(Context context, int formId, String json, FormResponse.FormSubmitListener formSubmitListener) {
+    public void openDynamicFormActivity(Context context, int formId, String json, FormResponse.FormSubmitListener formSubmitListener) {
         FormBuilderModel property = GsonParser.getGson().fromJson(json, FormBuilderModel.class);
         if (property != null) {
-            openRegistrationActivity(context, formId, property, formSubmitListener);
+            openDynamicFormActivity(context, formId, property, formSubmitListener);
         } else {
             FBUtility.showToastCentre(context, FBConstant.Error.INVALID_FORM_DATA);
         }
     }
 
 
-    public void openRegistrationActivity(Context context, int formId, FormBuilderModel property, FormResponse.FormSubmitListener formSubmitListener) {
+    public void openDynamicFormActivity(Context context, int formId, FormBuilderModel property, FormResponse.FormSubmitListener formSubmitListener) {
         setFormSubmitListener(formSubmitListener);
-        if (!isRegistrationCompleted(context, formId)) {
+        if (!isFormSubmitted(context, formId)) {
             context.startActivity(new Intent(context, FormBuilderActivity.class)
                     .putExtra(FBConstant.CATEGORY_PROPERTY, property));
         } else {

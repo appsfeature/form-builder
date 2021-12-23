@@ -8,7 +8,7 @@ import android.text.TextUtils;
 
 public class FBPreferences {
 
-    public static final String IS_REGISTRATION_COMPLETED = "is_registration_completed";
+    public static final String IS_FORM_SUBMITTED = "is_form_submitted";
 
     private static SharedPreferences sharedPreferences;
 
@@ -104,13 +104,13 @@ public class FBPreferences {
         return input;
     }
 
-    public static void setRegistrationCompleted(Context context, int formId, boolean value) {
+    public static void setFormSubmitted(Context context, int formId, boolean value) {
         if(formId > 0) {
-            setBoolean(context, IS_REGISTRATION_COMPLETED + formId, value);
+            setBoolean(context, IS_FORM_SUBMITTED + formId, value);
         }
     }
 
-    public static boolean isRegistrationCompleted(Context context, int formId) {
-        return getBoolean(context, IS_REGISTRATION_COMPLETED + formId, false);
+    public static boolean isFormSubmitted(Context context, int formId) {
+        return getBoolean(context, IS_FORM_SUBMITTED + formId, false);
     }
 }

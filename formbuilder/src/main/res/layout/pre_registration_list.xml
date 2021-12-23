@@ -6,10 +6,12 @@
 
     <include layout="@layout/pre_layout_no_data" />
 
+    <include layout="@layout/pre_action_bar" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_below="@+id/layout_action_bar">
 
         <LinearLayout
             android:layout_width="match_parent"
