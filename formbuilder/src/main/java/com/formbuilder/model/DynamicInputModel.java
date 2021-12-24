@@ -39,6 +39,9 @@ public class DynamicInputModel implements Serializable {
     @Expose
     @SerializedName(value="paramKey")
     private String paramKey;
+    @Expose
+    @SerializedName(value="isSpinnerSelectTitle")
+    private boolean isSpinnerSelectTitle;
 
     public String getFieldName() {
         return fieldName;
@@ -114,6 +117,14 @@ public class DynamicInputModel implements Serializable {
 
     public void setParamKey(String paramKey) {
         this.paramKey = paramKey;
+    }
+
+    public boolean isSpinnerSelectTitle() {
+        return isSpinnerSelectTitle;
+    }
+
+    public void setSpinnerSelectTitle(boolean spinnerSelectTitle) {
+        isSpinnerSelectTitle = spinnerSelectTitle;
     }
 
     public String toJson(boolean excludeFieldsWithoutExposeAnnotation) {

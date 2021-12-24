@@ -68,7 +68,7 @@ public class SpinnerViewHolder extends RecyclerView.ViewHolder {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 MasterEntity mSelectedItem = (MasterEntity) parent.getItemAtPosition(position);
                 if (mSelectedItem != null) {
-                    item.setInputData(mSelectedItem.getId() + "");
+                    item.setInputData(item.isSpinnerSelectTitle() ? mSelectedItem.getTitle() : mSelectedItem.getId() + "");
                 }
             }
 
