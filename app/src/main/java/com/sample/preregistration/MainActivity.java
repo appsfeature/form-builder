@@ -64,8 +64,8 @@ public class MainActivity extends AppCompatActivity {
         item.setSubTitle("Create all fields dynamic by json or Model structure.");
         item.setBaseUrl("https://www.yourwebsite.in/api/v3/");
         item.setRequestApi("submit-form");
-        item.setRequestType(RequestType.GET);
-        item.setSubmissionType(SubmissionType.BULK_JSON);
+        item.setRequestType(RequestType.POST_FORM);
+        item.setSubmissionType(SubmissionType.KEY_VALUE_PAIR);
         item.setPopup(getPopup());
         item.setInputList(getInputFieldList());
         item.setExtraParams(getExtraParams());
@@ -87,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
         item.setFieldName("Select Steam");
         item.setParamKey("steam");
         item.setFieldType(FieldType.SPINNER);
+        item.setSpinnerSelectTitle(true);
         item.setFieldData("[{\"id\":1,\"title\":\"PCM\"},{\"id\":2,\"title\":\"PCMB\"},{\"id\":3,\"title\":\"Arts\"},{\"id\":4,\"title\":\"Commerce\"}]");
         fieldList.add(item);
 
@@ -131,13 +132,13 @@ public class MainActivity extends AppCompatActivity {
         item.setFieldName("Address");
         item.setParamKey("address");
         item.setInputType(FieldInputType.textMultiLine);
-        item.setFieldType(FieldType.EDIT_TEXT);
+        item.setFieldType(FieldType.EMPTY_VIEW);
         fieldList.add(item);
 
         item = new DynamicInputModel();
         item.setFieldName("Subscribe for news updates");
         item.setParamKey("agree_check_box");
-        item.setFieldType(FieldType.CHECK_BOX);
+        item.setFieldType(FieldType.EMPTY_VIEW);
         fieldList.add(item);
 
         return fieldList;

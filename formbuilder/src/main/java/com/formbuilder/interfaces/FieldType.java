@@ -11,7 +11,8 @@ import java.lang.annotation.RetentionPolicy;
         FieldType.SPINNER,
         FieldType.RADIO_BUTTON,
         FieldType.CHECK_BOX,
-        FieldType.DATE_PICKER
+        FieldType.DATE_PICKER,
+        FieldType.EMPTY_VIEW
 })
 @Retention(RetentionPolicy.SOURCE)
 public @interface FieldType {
@@ -21,4 +22,5 @@ public @interface FieldType {
     int RADIO_BUTTON = 3;
     int CHECK_BOX = 4;
     int DATE_PICKER = 5;
+    int EMPTY_VIEW = 6;
 }

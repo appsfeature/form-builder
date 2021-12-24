@@ -11,6 +11,7 @@ import com.formbuilder.R;
 import com.formbuilder.adapter.holder.CheckBoxViewHolder;
 import com.formbuilder.adapter.holder.DatePickerViewHolder;
 import com.formbuilder.adapter.holder.EditTextViewHolder;
+import com.formbuilder.adapter.holder.EmptyViewHolder;
 import com.formbuilder.adapter.holder.RadioViewHolder;
 import com.formbuilder.adapter.holder.SpinnerViewHolder;
 import com.formbuilder.adapter.holder.TextViewHolder;
@@ -48,8 +49,10 @@ public class DynamicInputAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             return new CheckBoxViewHolder(this, LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.pre_slot_check_box, viewGroup, false));
         } else if (i == FieldType.DATE_PICKER) {
             return new DatePickerViewHolder(this, LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.pre_slot_date_picker, viewGroup, false));
-        } else {
+        } else if (i == FieldType.EDIT_TEXT) {
             return new EditTextViewHolder(this, LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.pre_slot_edit_text, viewGroup, false));
+        } else {
+            return new EmptyViewHolder(this, LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.pre_slot_empty_view, viewGroup, false));
         }
     }
 
