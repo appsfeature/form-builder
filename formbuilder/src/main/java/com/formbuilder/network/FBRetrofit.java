@@ -3,6 +3,8 @@ package com.formbuilder.network;
 import android.text.TextUtils;
 
 import com.formbuilder.FormBuilder;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
 
@@ -33,9 +35,12 @@ public class FBRetrofit {
             if(!host.endsWith("/")){
                 host += "/";
             }
+            Gson gson = new GsonBuilder()
+                    .setLenient()
+                    .create();
             retrofit = new Retrofit.Builder()
                     .baseUrl(host)
-                    .addConverterFactory(GsonConverterFactory.create())
+                    .addConverterFactory(GsonConverterFactory.create(gson))
                     .client(getHttpClient(securityCode, securityCodeEnc, FormBuilder.getInstance().isDebugModeEnabled).build())
                     .build();
         } catch (Exception e) {
