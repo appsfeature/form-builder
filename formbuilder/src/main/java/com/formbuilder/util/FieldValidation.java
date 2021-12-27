@@ -89,7 +89,7 @@ public class FieldValidation {
         return isEmpty(context, editText, EMPTY);
     }
 
-    private static boolean isEmpty(Context context, String string, String errorMsg) {
+    public static boolean isEmpty(Context context, String string, String errorMsg) {
         if (TextUtils.isEmpty(string)) {
             Toast.makeText(context, errorMsg, Toast.LENGTH_LONG).show();
             return false;
