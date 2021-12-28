@@ -129,7 +129,7 @@ public class FBUtility {
     }
 
     public static void log(String message) {
-        if(FormBuilder.getInstance().isDebugModeEnabled){
+        if(FormBuilder.getInstance().isDebugModeEnabled()){
             Log.d(FormBuilder.class.getSimpleName(), message == null ? "null" : message);
         }
     }

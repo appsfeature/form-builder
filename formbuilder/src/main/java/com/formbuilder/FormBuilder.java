@@ -21,7 +21,7 @@ public class FormBuilder {
     public static final int LIBRARY_VERSION = 1;
 
     private static volatile FormBuilder sSoleInstance;
-    public boolean isDebugModeEnabled = false;
+    private boolean isDebugModeEnabled = false;
     public String appVersion;
 
     private FormBuilder() {

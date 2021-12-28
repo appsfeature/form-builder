@@ -41,7 +41,7 @@ public class FBRetrofit {
             retrofit = new Retrofit.Builder()
                     .baseUrl(host)
                     .addConverterFactory(GsonConverterFactory.create(gson))
-                    .client(getHttpClient(securityCode, securityCodeEnc, FormBuilder.getInstance().isDebugModeEnabled).build())
+                    .client(getHttpClient(securityCode, securityCodeEnc, FormBuilder.getInstance().isDebugModeEnabled()).build())
                     .build();
         } catch (Exception e) {
             e.printStackTrace();
