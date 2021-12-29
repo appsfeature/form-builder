@@ -72,12 +72,12 @@ public abstract class BaseFormBuilderFragment extends Fragment {
 
     private void initUI(View v) {
         getIntentData();
+        updatePositionMap();
         onInitViews(v);
         initView(v);
 
         onLoadData();
         loadData();
-        updatePositionMap();
     }
 
     private void loadData() {
@@ -238,12 +238,14 @@ public abstract class BaseFormBuilderFragment extends Fragment {
     }
 
     private void updatePositionMap() {
-        int index = 0;
-        for (DynamicInputModel item : mList) {
-            if (item.getFieldType() == FieldType.EMPTY_VIEW) {
-                positionMap.put(item.getParamKey(), index);
+        if(property.getInputList() != null && property.getInputList().size() > 0) {
+            int index = 0;
+            for (DynamicInputModel item : property.getInputList()) {
+                if (item.getFieldType() == FieldType.EMPTY_VIEW) {
+                    positionMap.put(item.getParamKey(), index);
+                }
+                index++;
             }
-            index++;
         }
     }
 }

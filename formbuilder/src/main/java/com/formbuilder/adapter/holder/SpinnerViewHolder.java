@@ -57,7 +57,7 @@ public class SpinnerViewHolder extends RecyclerView.ViewHolder {
     }
 
     public static void showValidationError(Context context, String spinnerTitle) {
-        FBUtility.showToastCentre(context, "Please " + spinnerTitle);
+        FBUtility.showToastCentre(context, "Please Select " + spinnerTitle);
     }
 
     public void setData(DynamicInputModel item) throws Exception{
