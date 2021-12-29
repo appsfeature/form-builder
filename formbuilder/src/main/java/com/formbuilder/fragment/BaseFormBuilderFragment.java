@@ -76,8 +76,8 @@ public abstract class BaseFormBuilderFragment extends Fragment {
         onInitViews(v);
         initView(v);
 
-        onLoadData();
         loadData();
+        onLoadData();
     }
 
     private void loadData() {
