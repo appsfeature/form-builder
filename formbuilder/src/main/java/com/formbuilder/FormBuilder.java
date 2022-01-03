@@ -23,6 +23,7 @@ public class FormBuilder {
     private static volatile FormBuilder sSoleInstance;
     private boolean isDebugModeEnabled = false;
     public String appVersion;
+    private FormResponse.SyncSignupForm syncSignupFormListener;
 
     private FormBuilder() {
 
@@ -99,5 +100,16 @@ public class FormBuilder {
         if(mFormSubmitListener != null){
             mFormSubmitListener.onFormSubmitted(data);
         }
+    }
+
+    public void syncSignupForm(){
+        if(syncSignupFormListener != null){
+            syncSignupFormListener.onSyncSignupForm();
+        }
+    }
+
+    public void setSyncSignupFormListener(FormResponse.SyncSignupForm syncSignupFormListener) {
+        this.syncSignupFormListener = null;
+        this.syncSignupFormListener = syncSignupFormListener;
     }
 }

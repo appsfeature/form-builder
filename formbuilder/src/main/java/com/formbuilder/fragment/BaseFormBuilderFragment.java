@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.formbuilder.FormBuilder;
 import com.formbuilder.R;
 import com.formbuilder.adapter.DynamicInputAdapter;
 import com.formbuilder.adapter.holder.SpinnerViewHolder;
@@ -61,6 +62,20 @@ public abstract class BaseFormBuilderFragment extends Fragment {
     public abstract void onInitViews(View view);
     public abstract void onLoadData();
     public abstract boolean onValidationCheck();
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        FormBuilder.getInstance().setSyncSignupFormListener(new FormResponse.SyncSignupForm() {
+            @Override
+            public void onSyncSignupForm() {
+                if(isVisible() && mRecyclerView != null) {
+                    loadData();
+                    onLoadData();
+                }
+            }
+        });
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
