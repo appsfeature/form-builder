@@ -8,6 +8,7 @@
     <application>
         <activity android:name="com.formbuilder.activity.FormBuilderActivity"
             android:theme="@style/FormTheme.MaterialComponents.ActionBar"
+            android:exported="true"
             android:configChanges="orientation|screenSize"/>
     </application>
 </manifest>
