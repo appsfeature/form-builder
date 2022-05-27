@@ -16,6 +16,8 @@ import com.formbuilder.model.DynamicInputModel;
 import com.formbuilder.model.FormBuilderModel;
 import com.formbuilder.model.entity.PopupEntity;
 import com.formbuilder.util.FBPreferences;
+import com.formbuilder.util.GsonParser;
+import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
 
     private static final int SAMPLE_FORM_ID = 1;
     private static final String SAMPLE_FORM_NAME = "Dynamic Form Builder";
-    private static final String sampleJson = "{\"formId\":52,\"title\":\"UP Board Result\",\"sub_title\":\"Note: To get UP Board Result update on WhatsApp and Gmail\",\"requestApi\":\"https://www.yourwebsite.in/api/v3/submit-form\",\"methodType\":\"POST\",\"buttonText\":\"Register\",\"popup\":{\"title\":\"Thank You!\",\"description\":\"You will get your result soon\",\"submit_btn_text\":\"Continue\"},\"fieldList\":[{\"fieldData\":null,\"fieldName\":\"Name\",\"fieldSuggestions\":null,\"fieldType\":1,\"inputType\":\"textPersonName\"},{\"fieldData\":null,\"fieldName\":\"Roll Number\",\"fieldSuggestions\":null,\"fieldType\":1,\"inputType\":\"number\"},{\"fieldData\":\"[{\\\"id\\\":1,\\\"title\\\":\\\"PCM\\\"},{\\\"id\\\":2,\\\"title\\\":\\\"PCMB\\\"},{\\\"id\\\":3,\\\"title\\\":\\\"Arts\\\"},{\\\"id\\\":4,\\\"title\\\":\\\"Commerce\\\"}]\",\"fieldName\":\"Select Steam\",\"fieldSuggestions\":null,\"fieldType\":2,\"inputType\":null},{\"fieldData\":null,\"fieldName\":\"Mobile No\",\"fieldSuggestions\":\"[\\\"9891983694\\\"]\",\"fieldType\":1,\"inputType\":\"phone\"},{\"fieldData\":null,\"fieldName\":\"Email Id\",\"fieldSuggestions\":\"[\\\"@gmail.com\\\", \\\"@yahoo.com\\\", \\\"@hotmail.com\\\", \\\"@outlook.com\\\"]\",\"fieldType\":1,\"inputType\":\"textEmailAddress\"},{\"fieldData\":null,\"fieldName\":\"Address\",\"fieldSuggestions\":null,\"fieldType\":1,\"inputType\":\"textMultiLine\"}]}";
-    private static final boolean isOpenActivityByJson = false;
+    private static final String sampleJson = "{\"formId\":1,\"title\":\"Dynamic Form Builder\",\"subTitle\":\"Create all fields dynamic by json or Model structure.\",\"submissionType\":1,\"isShowActionbar\":false,\"buttonText\":\"Submit\",\"extraParams\":{\"app_name\":\"Dynamic Form Builder\"},\"baseUrl\":\"https://www.yourwebsite.in/api/v3/\",\"requestApi\":\"submit-form\",\"requestType\":3,\"popup\":{\"buttonText\":\"Continue\",\"description\":\"You will get your updates soon\",\"title\":\"Thank You!\"},\"fieldList\":[{\"fieldName\":\"Name\",\"fieldType\":1,\"inputType\":\"textPersonName\",\"isSpinnerSelectTitle\":false,\"maxLength\":0,\"paramKey\":\"name\",\"validation\":\"\"},{\"fieldData\":\"[{\\\"id\\\":1,\\\"title\\\":\\\"PCM\\\"},{\\\"id\\\":2,\\\"title\\\":\\\"PCMB\\\"},{\\\"id\\\":3,\\\"title\\\":\\\"Arts\\\"},{\\\"id\\\":4,\\\"title\\\":\\\"Commerce\\\"}]\",\"fieldName\":\"Select Steam\",\"fieldType\":2,\"inputType\":\"text\",\"isSpinnerSelectTitle\":true,\"maxLength\":0,\"paramKey\":\"steam\",\"validation\":\"\"},{\"fieldData\":\"[\\\"Male\\\",\\\"Female\\\"]\",\"fieldName\":\"Select Gender\",\"fieldType\":3,\"inputType\":\"text\",\"isSpinnerSelectTitle\":false,\"maxLength\":0,\"paramKey\":\"gender\",\"validation\":\"\"},{\"fieldData\":\"Select Date\",\"fieldName\":\"Date of Birth\",\"fieldType\":5,\"inputType\":\"text\",\"isSpinnerSelectTitle\":false,\"maxLength\":0,\"paramKey\":\"dob\",\"validation\":\"\"},{\"fieldName\":\"Personal Detail\",\"fieldType\":0,\"inputType\":\"text\",\"isSpinnerSelectTitle\":false,\"maxLength\":0,\"paramKey\":\"personal_detail\",\"validation\":\"\"},{\"fieldName\":\"Mobile No\",\"fieldSuggestions\":\"[\\\"9891983694\\\"]\",\"fieldType\":1,\"inputType\":\"phone\",\"isSpinnerSelectTitle\":false,\"maxLength\":10,\"paramKey\":\"mobile\",\"validation\":\"\"},{\"fieldName\":\"Email Id\",\"fieldSuggestions\":\"[\\\"@gmail.com\\\", \\\"@yahoo.com\\\", \\\"@hotmail.com\\\", \\\"@outlook.com\\\"]\",\"fieldType\":1,\"inputType\":\"textEmailAddress\",\"isSpinnerSelectTitle\":false,\"maxLength\":0,\"paramKey\":\"email_id\",\"validation\":\"\"},{\"fieldName\":\"Address\",\"fieldType\":6,\"inputType\":\"textMultiLine\",\"isSpinnerSelectTitle\":false,\"maxLength\":0,\"paramKey\":\"address\",\"validation\":\"\"},{\"fieldName\":\"Subscribe for news updates\",\"fieldType\":6,\"inputType\":\"text\",\"isSpinnerSelectTitle\":false,\"maxLength\":0,\"paramKey\":\"agree_check_box\",\"validation\":\"\"}]}";
+    private static final boolean isOpenActivityByJson = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         if(isOpenActivityByJson) {
             FormBuilder.getInstance().openDynamicFormActivity(this, SAMPLE_FORM_ID, sampleJson, null);
         }else {
+//            String property = GsonParser.toJsonAll(getCategoryProperty(), new TypeToken<FormBuilderModel>() {});
             FormBuilder.getInstance().openDynamicFormActivity(this, SAMPLE_FORM_ID, getCategoryProperty(), new FormResponse.FormSubmitListener() {
                 @Override
                 public void onFormSubmitted(String data) {

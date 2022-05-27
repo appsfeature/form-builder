@@ -2,6 +2,8 @@ package com.formbuilder.network;
 
 import android.text.TextUtils;
 
+import androidx.annotation.Nullable;
+
 import com.formbuilder.FormBuilder;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -22,24 +24,27 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class FBRetrofit {
 
-    public static Retrofit getClient(String host) {
-        return getClient(host,"", null);
+    private static final String defaultBaseUrl = "http://appsfeature.com/";
+
+    public static Retrofit getClient(String baseUrl) {
+        return getClient(baseUrl,"", null);
     }
 
-    public static Retrofit getClient(String host, String securityCode, String securityCodeEnc) {
-        if(host == null){
-            return null;
+    @Nullable
+    public static Retrofit getClient(String baseUrl, String securityCode, String securityCodeEnc) {
+        if(baseUrl == null){
+            baseUrl = defaultBaseUrl;
         }
         Retrofit retrofit = null;
         try {
-            if(!host.endsWith("/")){
-                host += "/";
+            if(!baseUrl.endsWith("/")){
+                baseUrl += "/";
             }
             Gson gson = new GsonBuilder()
                     .setLenient()
                     .create();
             retrofit = new Retrofit.Builder()
-                    .baseUrl(host)
+                    .baseUrl(baseUrl)
                     .addConverterFactory(GsonConverterFactory.create(gson))
                     .client(getHttpClient(securityCode, securityCodeEnc, FormBuilder.getInstance().isDebugModeEnabled()).build())
                     .build();

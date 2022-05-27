@@ -31,5 +31,6 @@ dependencies {
 
     implementation "androidx.appcompat:appcompat:$rootProject.ext.appcompat"
     implementation "com.google.android.material:material:$rootProject.ext.material"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.ext.retrofit_version"
     implementation project(path: ':formbuilder')
 }
