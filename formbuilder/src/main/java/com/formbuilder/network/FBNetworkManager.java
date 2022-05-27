@@ -22,6 +22,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.TreeMap;
 import java.util.concurrent.Callable;
 
 import retrofit2.Response;
@@ -53,7 +54,7 @@ public class FBNetworkManager {
             public FBNetworkModel call() throws Exception {
                 try {
                     String userData = getSubmitModel(property.getFormId(), mList).toJson();
-                    FBUtility.log("JSON : " + userData);
+                    FBUtility.log("okhttp : " + userData);
 
                     Map<String, String> params = new HashMap<>();
                     if (property.getExtraParams() != null) {
@@ -63,9 +64,8 @@ public class FBNetworkManager {
                             params.put(key, value);
                         }
                     }
-                    params.put("pkg_name", context.getPackageName());
-                    params.put("cat_id", property.getFormId() + "");
-                    params.put("data", FBUtility.encode(userData));
+                    params.put("form_id", property.getFormId() + "");
+                    params.put("data", FormBuilder.getInstance().isEnableJsonEncode() ? FBUtility.encode(userData) : userData);
                     Response<FBNetworkModel> response;
                     if (property.getRequestType() == RequestType.GET) {
                         response = mRetrofit.requestGet(property.getRequestApi(), params).execute();
@@ -100,7 +100,6 @@ public class FBNetworkManager {
                 try {
                     Map<String, String> params = new HashMap<>();
                     params.put("form_id", "" + property.getFormId());
-                    params.put("pkg_name", context.getPackageName());
                     params.put("application_id", "" + context.getPackageName());
                     params.put("timestamp", "" + getServerTimeStamp());
                     if (property.getExtraParams() != null) {
@@ -150,8 +149,18 @@ public class FBNetworkManager {
         model.setAppVersion(FormBuilder.getInstance().getAppVersion());
         model.setTimestamp(getServerTimeStamp());
         model.setAppName(context.getString(R.string.app_name));
-        model.setInputFieldData(mList);
+        model.setInputFieldData(getHashMapInputData(mList));
         return model;
+    }
+
+    private Map<String, String> getHashMapInputData(List<DynamicInputModel> mList) {
+        Map<String, String> map = new TreeMap<>();
+        for (DynamicInputModel item : mList){
+            if (item.getFieldType() != FieldType.TEXT_VIEW) {
+                map.put(item.getParamKey(), item.getInputData());
+            }
+        }
+        return map;
     }
 
     private String getServerTimeStamp() {

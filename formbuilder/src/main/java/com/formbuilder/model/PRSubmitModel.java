@@ -5,7 +5,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.reflect.TypeToken;
 
-import java.util.List;
+import java.util.Map;
 
 public class PRSubmitModel {
     @Expose
@@ -28,7 +28,7 @@ public class PRSubmitModel {
     private String appName ;
     @Expose
     @SerializedName(value="input_field_data")
-    private List<DynamicInputModel> inputFieldData;
+    private Map<String, String> inputFieldData;
 
     public int getFormId() {
         return formId;
@@ -78,11 +78,11 @@ public class PRSubmitModel {
         this.appName = appName;
     }
 
-    public List<DynamicInputModel> getInputFieldData() {
+    public Map<String, String> getInputFieldData() {
         return inputFieldData;
     }
 
-    public void setInputFieldData(List<DynamicInputModel> inputFieldData) {
+    public void setInputFieldData(Map<String, String> inputFieldData) {
         this.inputFieldData = inputFieldData;
     }
 

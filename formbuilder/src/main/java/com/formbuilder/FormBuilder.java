@@ -23,6 +23,7 @@ public class FormBuilder {
     private static volatile FormBuilder sSoleInstance;
     private boolean isDebugModeEnabled = false;
     public String appVersion;
+    public boolean isEnableJsonEncode = true;
     private FormResponse.SyncSignupForm syncSignupFormListener;
 
     private FormBuilder() {
@@ -111,5 +112,14 @@ public class FormBuilder {
     public void setSyncSignupFormListener(FormResponse.SyncSignupForm syncSignupFormListener) {
         this.syncSignupFormListener = null;
         this.syncSignupFormListener = syncSignupFormListener;
+    }
+
+    public FormBuilder setEnableJsonEncode(boolean isEnableJsonEncode) {
+        this.isEnableJsonEncode = isEnableJsonEncode;
+        return this;
+    }
+
+    public boolean isEnableJsonEncode() {
+        return isEnableJsonEncode;
     }
 }
