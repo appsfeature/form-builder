@@ -63,6 +63,8 @@ public class FBNetworkManager {
                             params.put(key, value);
                         }
                     }
+                    params.put("pkg_name", context.getPackageName());
+                    params.put("cat_id", property.getFormId() + "");
                     params.put("data", FBUtility.encode(userData));
                     Response<FBNetworkModel> response;
                     if (property.getRequestType() == RequestType.GET) {
@@ -98,6 +100,7 @@ public class FBNetworkManager {
                 try {
                     Map<String, String> params = new HashMap<>();
                     params.put("form_id", "" + property.getFormId());
+                    params.put("pkg_name", context.getPackageName());
                     params.put("application_id", "" + context.getPackageName());
                     params.put("timestamp", "" + getServerTimeStamp());
                     if (property.getExtraParams() != null) {
