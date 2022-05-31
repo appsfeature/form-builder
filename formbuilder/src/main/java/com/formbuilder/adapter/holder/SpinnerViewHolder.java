@@ -4,11 +4,11 @@ import android.content.Context;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.formbuilder.R;
-import com.formbuilder.activity.FormBuilderActivity;
 import com.formbuilder.adapter.DynamicInputAdapter;
 import com.formbuilder.adapter.SpinnerAdapter;
 import com.formbuilder.model.DynamicInputModel;
@@ -25,13 +25,16 @@ import java.util.List;
  * R.layout.pre_slot_spinner
  */
 public class SpinnerViewHolder extends RecyclerView.ViewHolder {
+    private static final String SPINNER_HINT_PLACEHOLDER = "Select";
     public final Spinner spinnerInput;
     private final DynamicInputAdapter mAdapter;
+    private final TextView tvInputHint;
 
     public SpinnerViewHolder(DynamicInputAdapter mAdapter, View view) {
         super(view);
         this.mAdapter = mAdapter;
         spinnerInput = view.findViewById(R.id.spinner_input);
+        tvInputHint = view.findViewById(R.id.tv_input_hint);
         (view.findViewById(R.id.spinner_input_layout)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,7 +49,7 @@ public class SpinnerViewHolder extends RecyclerView.ViewHolder {
             fieldList = GsonParser.fromJson(fieldData, new TypeToken<List<MasterEntity>>() {
             });
             if (fieldList != null) {
-                fieldList.add(0, new MasterEntity(0, fieldName));
+                fieldList.add(0, new MasterEntity(0, SPINNER_HINT_PLACEHOLDER));
             }
         }
         if(fieldList == null){
@@ -57,7 +60,7 @@ public class SpinnerViewHolder extends RecyclerView.ViewHolder {
     }
 
     public static void showValidationError(Context context, String spinnerTitle) {
-        FBUtility.showToastCentre(context, "Please Select " + spinnerTitle);
+        FBUtility.showToastCentre(context, "Invalid " + spinnerTitle);
     }
 
     public void setData(DynamicInputModel item) throws Exception{
@@ -67,7 +70,7 @@ public class SpinnerViewHolder extends RecyclerView.ViewHolder {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 MasterEntity mSelectedItem = (MasterEntity) parent.getItemAtPosition(position);
-                if (mSelectedItem != null) {
+                if (mSelectedItem != null && !mSelectedItem.getTitle().equals(SPINNER_HINT_PLACEHOLDER)) {
                     item.setInputData(item.isSpinnerSelectTitle() ? mSelectedItem.getTitle() : mSelectedItem.getId() + "");
                 }
             }
@@ -77,5 +80,8 @@ public class SpinnerViewHolder extends RecyclerView.ViewHolder {
 
             }
         });
+        if (tvInputHint != null) {
+            tvInputHint.setText(item.getFieldName());
+        }
     }
 }

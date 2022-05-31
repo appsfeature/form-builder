@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Workspace/DroidHelios/form-builder/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Workspace/DroidHelios/form-builder/formbuilder/src/main/res/drawable/pre_bg_shape_select_steam.xml" value="0.1545" />
+        <entry key="..\:/Workspace/DroidHelios/form-builder/formbuilder/src/main/res/layout/app_simple_spinner_dropdown_item.xml" value="0.27395833333333336" />
         <entry key="..\:/Workspace/DroidHelios/form-builder/formbuilder/src/main/res/layout/form_fragment.xml" value="0.275" />
         <entry key="..\:/Workspace/DroidHelios/form-builder/formbuilder/src/main/res/layout/pre_action_bar.xml" value="0.275" />
         <entry key="..\:/Workspace/DroidHelios/form-builder/formbuilder/src/main/res/layout/pre_activity_frag_holder.xml" value="0.275" />
@@ -12,6 +14,7 @@
         <entry key="..\:/Workspace/DroidHelios/form-builder/formbuilder/src/main/res/layout/pre_slot_date_picker.xml" value="0.275" />
         <entry key="..\:/Workspace/DroidHelios/form-builder/formbuilder/src/main/res/layout/pre_slot_edit_text.xml" value="0.275" />
         <entry key="..\:/Workspace/DroidHelios/form-builder/formbuilder/src/main/res/layout/pre_slot_empty_view.xml" value="0.275" />
+        <entry key="..\:/Workspace/DroidHelios/form-builder/formbuilder/src/main/res/layout/pre_slot_radio_button.xml" value="0.275" />
         <entry key="..\:/Workspace/DroidHelios/form-builder/formbuilder/src/main/res/layout/pre_slot_spinner.xml" value="0.275" />
         <entry key="..\:/Workspace/DroidHelios/form-builder/formbuilder/src/main/res/layout/pre_slot_text_view.xml" value="0.275" />
       </map>

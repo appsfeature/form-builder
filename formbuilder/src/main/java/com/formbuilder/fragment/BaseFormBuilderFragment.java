@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -173,6 +174,18 @@ public abstract class BaseFormBuilderFragment extends Fragment {
                                 || (mList.get(i).isSpinnerSelectTitle() ? mList.get(i).getInputData().equals("") : mList.get(i).getInputData().equals("0"))){
                             SpinnerViewHolder.showValidationError(activity, mList.get(i).getFieldName());
                             isValidAllFields = false;
+                        }
+                    }else if(mList.get(i).getValidation().equals(ValidationCheck.CHECK_BOX)) {
+                        View mRecycleView = mRecyclerView.getLayoutManager().getChildAt(i);
+                        if (mRecycleView != null && mRecycleView.findViewById(R.id.cb_check_box) instanceof CheckBox) {
+                            CheckBox checkBox = mRecycleView.findViewById(R.id.cb_check_box);
+                            if (checkBox != null) {
+                                if (mList.get(i).getValidation().equals(ValidationCheck.CHECK_BOX)
+                                        && !checkBox.isChecked()) {
+                                    SpinnerViewHolder.showValidationError(activity, mList.get(i).getFieldName());
+                                    isValidAllFields = false;
+                                }
+                            }
                         }
                     }else{
                         View mRecycleView = mRecyclerView.getLayoutManager().getChildAt(i);

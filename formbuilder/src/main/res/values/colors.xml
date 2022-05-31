@@ -4,6 +4,9 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
+    <color name="form_builder_text_color">@color/themeTextColor</color>
+    <color name="form_builder_hint_color">@color/themeHintColor</color>
+
     <!--App Default Theme Colors-->
     <color name="themePlaceHolderBackgroundCardColor">#FFFFFF</color>
     <color name="themeBackgroundCardColor">#FFFFFF</color>
@@ -29,5 +32,6 @@
     <color name="themeButtonShapeSelectedColor">@color/colorPrimaryDark</color>
     <color name="themeButtonShapeNotSelectedColor">#F5F5F5</color>
     <color name="pre_color_register_button">#E84C3D</color>
+    <color name="fb_color_bg_edittext">#FFFFFF</color>
     <!--App Default Theme Colors-->
 </resources>

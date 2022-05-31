@@ -1,34 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <LinearLayout
+        android:id="@+id/ll_main_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_between_fields"
-        android:background="@drawable/pre_bg_shape_select_steam"
-        android:gravity="center"
-        android:padding="16dp"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tv_radio_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:text="Radio Title"/>
-
-
-        <RadioGroup
-            android:id="@+id/rg_radio_group"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:background="@drawable/pre_bg_shape_select_steam"
+            android:gravity="center"
+            android:padding="16dp"
             android:orientation="vertical">
-        </RadioGroup>
+
+            <RadioGroup
+                android:id="@+id/rg_radio_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+            </RadioGroup>
+
+        </LinearLayout>
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/tv_input_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:textSize="12sp"
+        android:background="@android:color/white"
+        android:layout_alignTop="@+id/ll_main_view"
+        android:layout_marginLeft="12dp"
+        android:text="Hint"/>
 
-</LinearLayout>
+</RelativeLayout>

@@ -30,12 +30,14 @@ public class DatePickerViewHolder extends RecyclerView.ViewHolder {
     private final DynamicInputAdapter mAdapter;
     private final TextView tvDatePicker;
     private final View datePicker;
+    private final TextView tvInputHint;
     private int sDay, sMonth, sYear;
 
     public DatePickerViewHolder(DynamicInputAdapter mAdapter, View view) {
         super(view);
         this.mAdapter = mAdapter;
         tvDatePicker = view.findViewById(R.id.tv_date_picker);
+        tvInputHint = view.findViewById(R.id.tv_input_hint);
         datePicker = view.findViewById(R.id.date_input_layout);
         int[] date = DatePickerDialog.initDate(null);
         sDay=date[0];
@@ -44,7 +46,7 @@ public class DatePickerViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void setData(DynamicInputModel item) throws Exception{
-        tvDatePicker.setText(item.getFieldName());
+//        tvDatePicker.setText(item.getFieldName());
         datePicker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,5 +62,8 @@ public class DatePickerViewHolder extends RecyclerView.ViewHolder {
                 }, sDay, sMonth, sYear).show();
             }
         });
+        if (tvInputHint != null) {
+            tvInputHint.setText(item.getFieldName());
+        }
     }
 }

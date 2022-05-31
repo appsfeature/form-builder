@@ -6,15 +6,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_between_fields"
-        android:background="@drawable/pre_bg_shape_select_steam"
         android:gravity="center"
-        android:padding="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:paddingLeft="0dp"
+        android:paddingRight="16dp"
         android:orientation="vertical">
 
 
         <CheckBox
             android:id="@+id/cb_check_box"
+            style="@style/FormTheme.TextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Check Box" />

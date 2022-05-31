@@ -31,4 +31,17 @@
         <item name="colorPrimaryDark">@color/colorPrimary</item>
         <item name="colorAccent">@color/colorPrimaryDark</item>
     </style>
+
+
+    <style name="FormTheme.TextView" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/form_builder_text_color</item>
+        <item name="android:textColorHint">@color/form_builder_hint_color</item>
+        <item name="android:textSize">@dimen/form_builder_text_size</item>
+    </style>
+
+    <style name="FormTheme.TextView.Title" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/form_builder_text_color</item>
+        <item name="android:textSize">@dimen/form_builder_text_size_title</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>

@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.formbuilder.R;
 import com.formbuilder.model.entity.MasterEntity;
 
 import java.util.List;
@@ -35,7 +36,7 @@ public class SpinnerAdapter extends ArrayAdapter<MasterEntity> {
 
     private View initView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(android.R.layout.simple_spinner_dropdown_item, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.app_simple_spinner_dropdown_item, parent, false);
         }
         TextView textViewName = convertView.findViewById(android.R.id.text1);
         MasterEntity currentItem = getItem(position);

@@ -6,9 +6,10 @@
 
     <TextView
         android:id="@+id/tv_slot_text_view"
+        style="@style/FormTheme.TextView.Title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
+        android:text="PlaceHolder"
         android:layout_marginTop="@dimen/margin_between_fields"/>
 
 </LinearLayout>

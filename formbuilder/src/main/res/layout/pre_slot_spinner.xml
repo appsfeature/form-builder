@@ -1,33 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <LinearLayout
-        android:id="@+id/spinner_input_layout"
+        android:id="@+id/ll_main_view"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_between_fields"
-        android:background="@drawable/pre_bg_shape_select_steam"
-        android:gravity="center"
-        android:padding="16dp"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
-        <Spinner
-            android:id="@+id/spinner_input"
+        <LinearLayout
+            android:id="@+id/spinner_input_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:minHeight="55dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/pre_bg_shape_select_steam"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:paddingBottom="4dp"
-            android:layout_marginLeft="16dp"
-            android:visibility="gone"
-            android:paddingTop="2dp"
-            android:src="@drawable/pre_ic_action_down"/>
+            <Spinner
+                android:id="@+id/spinner_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:paddingBottom="4dp"
+                android:layout_marginLeft="16dp"
+                android:visibility="gone"
+                android:paddingTop="2dp"
+                android:src="@drawable/pre_ic_action_down"/>
+
+        </LinearLayout>
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/tv_input_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:textSize="12sp"
+        android:background="@android:color/white"
+        android:layout_alignTop="@+id/ll_main_view"
+        android:layout_marginLeft="12dp"
+        android:text="Hint"/>
 
-</LinearLayout>
+
+</RelativeLayout>
