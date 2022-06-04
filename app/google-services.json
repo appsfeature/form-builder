@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "863755870988",
+    "project_id": "commonproject-81f5f",
+    "storage_bucket": "commonproject-81f5f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:863755870988:android:b0cc4e3e1ba4e032155f29",
+        "android_client_info": {
+          "package_name": "com.appsfeature.formbuilder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "863755870988-bhlclu9bbkifmmj2n8caspthqgfvrohn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGQ8MOY2H7xGFhZkhz_0bS3DCq9PfyaqI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "863755870988-bhlclu9bbkifmmj2n8caspthqgfvrohn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

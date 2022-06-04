@@ -44,11 +44,11 @@ public class LocationViewHolder extends RecyclerView.ViewHolder {
                         .setLocationCallback(new LocationPickerCallback() {
                             @Override
                             public void onLocationSelected(LocationPickerDetail detail) {
-                                tvTitle.setText(detail.getAddressLine1());
-                                if(Objects.equals(item.getInputType(), FieldInputType.locationLatLng)){
-                                    item.setInputData(detail.getLatLong());
-                                }else {
+                                tvTitle.setText(detail.getCityDetails());
+                                if(Objects.equals(item.getInputType(), FieldInputType.locationAll)){
                                     item.setInputData(toJson(detail));
+                                }else {
+                                    item.setInputData(detail.getLatLong());
                                 }
                             }
 

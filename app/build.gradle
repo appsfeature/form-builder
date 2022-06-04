@@ -1,12 +1,14 @@
 plugins {
     id 'com.android.application'
+    id 'com.google.gms.google-services'
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 }
 
 android {
     compileSdk 31
 
     defaultConfig {
-        applicationId "com.appsfeature.dynamicapps"
+        applicationId "com.appsfeature.formbuilder"
         minSdk 19
         targetSdk 31
         versionCode 1

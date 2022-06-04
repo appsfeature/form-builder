@@ -144,7 +144,8 @@ public class MainActivity extends AppCompatActivity {
         item = new DynamicInputModel();
         item.setFieldName("Select Location");
         item.setParamKey("location");
-        item.setInputType(FieldInputType.locationAll);
+        item.setValidation(ValidationCheck.EMPTY);
+        item.setInputType(FieldInputType.locationLatLng);
         item.setFieldType(FieldType.LOCATION);
         fieldList.add(item);
 

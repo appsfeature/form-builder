@@ -197,6 +197,11 @@ public abstract class BaseFormBuilderFragment extends Fragment {
                                     isValidAllFields = status;
                                 }
                             }
+                        }else if(mList.get(i).getValidation().equals(ValidationCheck.EMPTY)) {
+                            if(TextUtils.isEmpty(mList.get(i).getInputData())){
+                                SpinnerViewHolder.showValidationError(activity, mList.get(i).getFieldName());
+                                isValidAllFields = false;
+                            }
                         }
                     }
                 }
