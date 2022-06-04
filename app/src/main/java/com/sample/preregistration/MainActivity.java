@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         if(isOpenActivityByJson) {
             FormBuilder.getInstance().openDynamicFormActivity(this, SAMPLE_FORM_ID, sampleJson, null);
         }else {
-//            String property = GsonParser.toJsonAll(getCategoryProperty(), new TypeToken<FormBuilderModel>() {});
+            String property = GsonParser.toJsonAll(getCategoryProperty(), new TypeToken<FormBuilderModel>() {});
             FormBuilder.getInstance().openDynamicFormActivity(this, SAMPLE_FORM_ID, getCategoryProperty(), new FormResponse.FormSubmitListener() {
                 @Override
                 public void onFormSubmitted(String data) {
