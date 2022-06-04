@@ -22,6 +22,8 @@ import androidx.core.content.ContextCompat;
 import com.formbuilder.FormBuilder;
 import com.formbuilder.R;
 import com.formbuilder.interfaces.FormResponse;
+import com.formbuilder.model.FormLocationProperties;
+import com.location.picker.interfaces.LocationProperties;
 
 import java.io.UnsupportedEncodingException;
 
@@ -166,5 +168,19 @@ public class FBUtility {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static LocationProperties getLocationProperty(FormLocationProperties properties) {
+        LocationProperties lp = new LocationProperties();
+        lp.setApiKey(properties.getApiKey());
+        lp.setEnableAddressLine1(properties.isEnableAddressLine1);
+        lp.setEnableAddressLine2(properties.isEnableAddressLine2);
+        lp.setEnableButtonDirection(properties.isEnableButtonDirection);
+        lp.setEnableButtonMap(properties.isEnableButtonMap);
+        lp.setEnableCityDetails(properties.isEnableCityDetails);
+        lp.setEnableSearchBar(properties.isEnableSearchBar);
+        lp.setEnableTranslucentStatus(properties.isEnableTranslucentStatus);
+        lp.setHintAddressLine1(properties.hintAddressLine1);
+        return lp;
     }
 }

@@ -12,6 +12,7 @@ import com.formbuilder.adapter.holder.CheckBoxViewHolder;
 import com.formbuilder.adapter.holder.DatePickerViewHolder;
 import com.formbuilder.adapter.holder.EditTextViewHolder;
 import com.formbuilder.adapter.holder.EmptyViewHolder;
+import com.formbuilder.adapter.holder.LocationViewHolder;
 import com.formbuilder.adapter.holder.RadioViewHolder;
 import com.formbuilder.adapter.holder.SpinnerViewHolder;
 import com.formbuilder.adapter.holder.TextViewHolder;
@@ -51,6 +52,8 @@ public class DynamicInputAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             return new DatePickerViewHolder(this, LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.pre_slot_date_picker, viewGroup, false));
         } else if (i == FieldType.EDIT_TEXT) {
             return new EditTextViewHolder(this, LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.pre_slot_edit_text, viewGroup, false));
+        } else if (i == FieldType.LOCATION) {
+            return new LocationViewHolder(this, LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.pre_slot_location, viewGroup, false));
         } else {
             return new EmptyViewHolder(this, LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.pre_slot_empty_view, viewGroup, false));
         }
@@ -77,6 +80,9 @@ public class DynamicInputAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 holder.setData(item);
             } else if (viewHolder instanceof DatePickerViewHolder) {
                 DatePickerViewHolder holder = (DatePickerViewHolder) viewHolder;
+                holder.setData(item);
+            } else if (viewHolder instanceof LocationViewHolder) {
+                LocationViewHolder holder = (LocationViewHolder) viewHolder;
                 holder.setData(item);
             }
         } catch (Exception e) {

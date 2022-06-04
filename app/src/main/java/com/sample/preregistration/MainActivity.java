@@ -142,6 +142,13 @@ public class MainActivity extends AppCompatActivity {
         fieldList.add(item);
 
         item = new DynamicInputModel();
+        item.setFieldName("Select Location");
+        item.setParamKey("location");
+        item.setInputType(FieldInputType.locationAll);
+        item.setFieldType(FieldType.LOCATION);
+        fieldList.add(item);
+
+        item = new DynamicInputModel();
         item.setFieldName("Subscribe for news updates");
         item.setParamKey("agree_check_box");
         item.setFieldType(FieldType.CHECK_BOX);

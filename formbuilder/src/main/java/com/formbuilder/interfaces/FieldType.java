@@ -12,7 +12,8 @@ import java.lang.annotation.RetentionPolicy;
         FieldType.RADIO_BUTTON,
         FieldType.CHECK_BOX,
         FieldType.DATE_PICKER,
-        FieldType.EMPTY_VIEW
+        FieldType.EMPTY_VIEW,
+        FieldType.LOCATION
 })
 @Retention(RetentionPolicy.SOURCE)
 public @interface FieldType {
@@ -23,4 +24,5 @@ public @interface FieldType {
     int CHECK_BOX = 4;
     int DATE_PICKER = 5;
     int EMPTY_VIEW = 6;
+    int LOCATION = 7;
 }

@@ -33,4 +33,5 @@ dependencies {
     implementation "com.google.android.material:material:$rootProject.ext.material"
     implementation "com.squareup.retrofit2:converter-gson:$rootProject.ext.retrofit_version"
     implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.ext.retrofit_okhttp_version"
+    implementation 'com.github.appsfeature:location-picker:2.5'
 }

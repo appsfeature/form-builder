@@ -7,14 +7,16 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 
 import com.formbuilder.activity.FormBuilderActivity;
-import com.formbuilder.fragment.BaseFormBuilderFragment;
 import com.formbuilder.fragment.FormBuilderFragment;
 import com.formbuilder.interfaces.FormResponse;
 import com.formbuilder.model.FormBuilderModel;
+import com.formbuilder.model.FormLocationProperties;
 import com.formbuilder.util.FBConstant;
 import com.formbuilder.util.FBPreferences;
 import com.formbuilder.util.FBUtility;
 import com.formbuilder.util.GsonParser;
+import com.location.picker.LocationPicker;
+import com.location.picker.interfaces.LocationProperties;
 
 public class FormBuilder {
 
@@ -25,6 +27,7 @@ public class FormBuilder {
     public String appVersion;
     public boolean isEnableJsonEncode = true;
     private FormResponse.SyncSignupForm syncSignupFormListener;
+    private LocationProperties mLocationProperties;
 
     private FormBuilder() {
 
@@ -121,5 +124,12 @@ public class FormBuilder {
 
     public boolean isEnableJsonEncode() {
         return isEnableJsonEncode;
+    }
+
+    public FormBuilder setLocationProperty(FormLocationProperties properties) {
+        this.mLocationProperties = FBUtility.getLocationProperty(properties);
+        LocationPicker.getInstance()
+                .setProperty(mLocationProperties);
+        return this;
     }
 }

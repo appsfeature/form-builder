@@ -14,7 +14,9 @@ import java.lang.annotation.RetentionPolicy;
         FieldInputType.phone,
         FieldInputType.textMultiLine,
         FieldInputType.textCapWords,
-        FieldInputType.textCapCharacters
+        FieldInputType.textCapCharacters,
+        FieldInputType.locationLatLng,
+        FieldInputType.locationAll
 })
 @Retention(RetentionPolicy.SOURCE)
 public @interface FieldInputType {
@@ -33,4 +35,6 @@ public @interface FieldInputType {
      * For example : HELLO WORLD
      */
     String textCapCharacters = "textCapCharacters";
+    String locationLatLng = "locationLatLng";
+    String locationAll = "locationAll";
 }
