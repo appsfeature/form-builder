@@ -23,7 +23,7 @@ public class AppApplication extends Application {
                         .setEnableAddressLine2(true)
                         .setEnableCityDetails(true)
                         .setHintAddressLine1("Enter Detail")
-                        .setApiKey(""))
+                        .setApiKey(getString(R.string.google_api_key)))
                 .setDebugModeEnabled(BuildConfig.DEBUG);
     }
 }
