@@ -37,7 +37,7 @@ Add this to your project build.gradle
 [![](https://jitpack.io/v/appsfeature/form-builder.svg)](https://jitpack.io/#appsfeature/form-builder)
 ```gradle
 dependencies {
-    implementation 'com.github.appsfeature:form-builder:1.8'
+    implementation 'com.github.appsfeature:form-builder:2.6'
 }
 ```
 Needed support libs
