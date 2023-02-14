@@ -23,10 +23,11 @@ allprojects {
     }
 
     ext {
-        appcompat = '1.3.0'
-        material = '1.3.0'
+        appcompat = '1.6.0'
+        material = '1.8.0'
         retrofit_version = '2.9.0'
-        retrofit_okhttp_version = '4.8.1'
+        retrofit_okhttp_version = '4.9.3'
+        google_places = '2.5.0'
     }
 }
 ```
@@ -37,7 +38,7 @@ Add this to your project build.gradle
 [![](https://jitpack.io/v/appsfeature/form-builder.svg)](https://jitpack.io/#appsfeature/form-builder)
 ```gradle
 dependencies {
-    implementation 'com.github.appsfeature:form-builder:1.8'
+    implementation 'com.github.appsfeature:form-builder:2.7'
 }
 ```
 Needed support libs

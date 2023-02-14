@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    compileSdk 31
+    compileSdk 33
 
     defaultConfig {
-        minSdk 19
-        targetSdk 31
+        minSdk 21
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -33,5 +33,5 @@ dependencies {
     implementation "com.google.android.material:material:$rootProject.ext.material"
     implementation "com.squareup.retrofit2:converter-gson:$rootProject.ext.retrofit_version"
     implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.ext.retrofit_okhttp_version"
-    implementation 'com.github.appsfeature:location-picker:2.5'
+    implementation 'com.github.appsfeature:location-picker:2.6'
 }
