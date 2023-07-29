@@ -21,9 +21,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
 }
 
@@ -33,5 +34,5 @@ dependencies {
     implementation "com.google.android.material:material:$rootProject.ext.material"
     implementation "com.squareup.retrofit2:converter-gson:$rootProject.ext.retrofit_version"
     implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.ext.retrofit_okhttp_version"
-    implementation 'com.github.appsfeature:location-picker:2.6'
+    implementation 'com.github.appsfeature:location-picker:2.7'
 }
